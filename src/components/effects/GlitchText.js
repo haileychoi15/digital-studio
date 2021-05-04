@@ -1,8 +1,9 @@
 import React from 'react';
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 
 const Wrapper = styled.div`
-    width: 100%;
+    width: fit-content;
+    margin-right: 1rem;
 `;
 
 const Effect = styled.div`
