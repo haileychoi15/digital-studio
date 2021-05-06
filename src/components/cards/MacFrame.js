@@ -3,8 +3,8 @@ import styled, { css } from 'styled-components';
 
 const Container = styled.div`
     position: relative;
-    width: 309px;
-    height: 160.5px;
+    width: 331px;
+    height: 187.66px;
     background-color: rgba(255,255,255,0.3);
     flex-shrink: 0;
 

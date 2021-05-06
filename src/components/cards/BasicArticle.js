@@ -26,15 +26,18 @@ const Article = styled.article`
 const Title = styled.h3`
     font-size: 1.375rem;
 
-    margin-bottom: 1rem;
+    margin-bottom: 1.2rem;
 
     @media screen and (min-width: 48rem) {
         font-size: 2.5rem;
+
+        margin-bottom: 1.5rem;
     }
 `;
 
 const Description = styled.p`
     font-size: 1rem;
+    //line-height: 1.8rem;
 
     @media screen and (min-width: 48rem) {
         font-size: 1.375rem;

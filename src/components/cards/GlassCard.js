@@ -13,6 +13,14 @@ const Card = styled.div`
     & + & {
         margin-left: 1rem;
     }
+
+    @media screen and (min-width: 48rem) {
+        padding: 3rem;
+
+        & + & {
+            margin-left: 5rem;
+        }
+    }
 `;
 
 function GlassCard({ children }) {

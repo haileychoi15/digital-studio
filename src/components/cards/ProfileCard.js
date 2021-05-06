@@ -3,6 +3,10 @@ import styled, { css } from 'styled-components';
 
 const Card = styled.article`
     min-width: 190px;
+
+    @media screen and (min-width: 48rem) {
+        min-width: 260px;
+    }
 `;
 
 const Image = styled.div`
@@ -15,6 +19,13 @@ const Image = styled.div`
     `};
 
     margin: 0 auto 1.2rem;
+
+    @media screen and (min-width: 48rem) {
+        width: 205px;
+        height: 205px;
+
+        margin: 0 auto 1.5rem;
+    }
 `;
 
 const Name = styled.h3`
@@ -24,7 +35,9 @@ const Name = styled.h3`
     margin-bottom: 1.2rem;
 
     @media screen and (min-width: 48rem) {
-        font-size: 2.5rem;
+        font-size: 2rem;
+
+        margin-bottom: 1.5rem;
     }
 `;
 

@@ -11,8 +11,28 @@ const Title = styled.h2`
 
     margin-bottom: 5rem;
 
+    ${({ summary }) => summary && css`
+        margin-bottom: 1.2rem;
+    `};
+
     @media screen and (min-width: 48rem) {
         font-size: 5rem;
+        margin-bottom: 10rem;
+
+        ${({ summary }) => summary && css`
+            margin-bottom: 1.5rem;
+        `};
+    }
+`;
+
+const Summary = styled.h3`
+    text-align: center;
+    font-size: 1rem;
+    font-weight: 400;
+    margin-bottom: 5rem;
+
+    @media screen and (min-width: 48rem) {
+        font-size: 1.375rem;
         margin-bottom: 10rem;
     }
 `;
@@ -51,10 +71,11 @@ const Content = styled.div`
     }
 `;
 
-function BasicSection({ title, scroll, children }) {
+function BasicSection({ title, summary, scroll, children }) {
     return (
         <Section>
-            <Title>{title}</Title>
+            <Title summary={summary}>{title}</Title>
+            {summary && <Summary>" {summary} "</Summary>}
             <ContentContainer scroll={scroll}>
                 <Content scroll={scroll}>
                     {children}

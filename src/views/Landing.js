@@ -101,12 +101,15 @@ function Landing() {
                         </BasicArticle>
                     )}
             </BasicSection>
-            <BasicSection title="Our Team" scroll>
+            <BasicSection title="Our Team" summary="you know what? cool kids never stop" scroll>
                     {teamList.map((member, index) =>
                         <GlassCard key={index}>
                             <ProfileCard name={member.name} image={member.image} features={member.features}></ProfileCard>
                         </GlassCard>
                     )}
+            </BasicSection>
+            <BasicSection title="Let’s collaborate">
+                    
             </BasicSection>
         </Container>
     )
