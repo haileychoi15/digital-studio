@@ -7,6 +7,7 @@ import MacFrame from 'components/cards/MacFrame';
 import BasicArticle from 'components/cards/BasicArticle';
 import GlassCard from 'components/cards/GlassCard';
 import ProfileCard from 'components/cards/ProfileCard';
+import Form from 'components/Form';
 
 const Container = styled.div`
     width: 100vw;
@@ -24,17 +25,30 @@ const ListGroup = styled.div`
 `;
 
 const List = styled.ul`
+    
+`;
+
+const ListItem = styled.li`
     font-size: 1.3rem;
+
+    & + & {
+        margin-top : 1rem;
+    }
 
     @media screen and (min-width: 48rem) {
         font-size: 2.5rem;
     }
 `;
 
-const ListItem = styled.li`
-    & + & {
-        margin-top : 1rem;
-    }
+const FormBlock = styled.div`
+    width: 100%;
+    padding: 0 5%;
+`;
+
+const ContactList = styled.ul`
+    width: fit-content;
+
+    margin: 0 auto 2rem;
 `;
 
 function Landing() {
@@ -73,6 +87,11 @@ function Landing() {
         }
     ]
 
+    const contactList = [
+        'virtual.studio.hi@gmail.com',
+        '010-9686-6440'
+    ]
+
     return (
         <Container>
             <Header />
@@ -109,7 +128,14 @@ function Landing() {
                     )}
             </BasicSection>
             <BasicSection title="Let’s collaborate">
-                    
+                <ContactList>
+                    {contactList.map((contact, index) => 
+                        <ListItem key={index}>{contact}</ListItem>
+                    )}
+                </ContactList>
+                <FormBlock>
+                    <Form />
+                </FormBlock>
             </BasicSection>
         </Container>
     )

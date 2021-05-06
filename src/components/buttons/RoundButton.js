@@ -28,9 +28,9 @@ const Button = styled.button`
     }
 `;
 
-function RoundButton({ buttonColor, children }) {
+function RoundButton({ buttonColor, children, isSubmit }) {
     return (
-        <Button buttonColor={buttonColor}>
+        <Button type={isSubmit ? 'submit' : 'button'} buttonColor={buttonColor}>
             {children}
         </Button>
     )

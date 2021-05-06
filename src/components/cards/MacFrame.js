@@ -15,9 +15,15 @@ const Container = styled.div`
     }
 
     @media screen and (min-width: 48rem) {
-        width: 439px;
-        height: 228.03px;
+        width: 513px;
+        height: 267.6px;
 
+        & + & {
+            margin-left: 2rem;
+        }
+    }
+
+    @media screen and (min-width: 64rem) {
         & + & {
             margin-left: 5rem;
         }

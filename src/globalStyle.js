@@ -53,6 +53,19 @@ const GlobalStyle = createGlobalStyle`
     cursor: pointer;
   }
 
+  input, textarea {
+    font-family: inherit;
+    font-size: inherit;
+    font-weight: inherit;
+    color: inherit;
+
+    &::placeholder {
+      font-size: inherit;
+      font-weight: 500;
+      color: #fff;
+    }
+  }
+
   button {
     border: none;
     border-radius: 6px;

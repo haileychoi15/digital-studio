@@ -1,5 +1,6 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
+import { ImQuotesLeft, ImQuotesRight } from "react-icons/im";
 
 const Section = styled.section`
     margin-bottom: 10rem;
@@ -31,8 +32,20 @@ const Summary = styled.h3`
     font-weight: 400;
     margin-bottom: 5rem;
 
+    .quote-icon {
+        position: relative;
+        top: -2px;
+        font-size: 0.75rem;
+    }
+
     @media screen and (min-width: 48rem) {
         font-size: 1.375rem;
+
+        .quote-icon {
+            top: -4px;
+            font-size: 1rem;
+        }
+
         margin-bottom: 10rem;
     }
 `;
@@ -75,7 +88,12 @@ function BasicSection({ title, summary, scroll, children }) {
     return (
         <Section>
             <Title summary={summary}>{title}</Title>
-            {summary && <Summary>" {summary} "</Summary>}
+            {summary && 
+                <Summary>
+                    <ImQuotesLeft className="quote-icon" />
+                        &nbsp; {summary} &nbsp;
+                    <ImQuotesRight className="quote-icon" />
+                </Summary>}
             <ContentContainer scroll={scroll}>
                 <Content scroll={scroll}>
                     {children}
