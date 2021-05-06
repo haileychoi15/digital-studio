@@ -28,9 +28,22 @@ const ContentContainer = styled.div`
 `;
 
 const Content = styled.div`
-    display: flex;
-    width: fit-content;
+    //display: flex;
+    width: 100%;
     padding: 0 1rem;
+
+    ${({ scroll }) => scroll && css`
+        display: flex;
+        width: fit-content;
+    `}
+
+    @media screen and (min-width: 48rem) {
+        padding: 0 10%;
+
+        ${({ scroll }) => scroll && css`
+            padding: 0 1rem;
+        `}
+    }
 
     @media screen and (min-width: 64rem) {
         width: 100%;
@@ -43,7 +56,7 @@ function BasicSection({ title, scroll, children }) {
         <Section>
             <Title>{title}</Title>
             <ContentContainer scroll={scroll}>
-                <Content>
+                <Content scroll={scroll}>
                     {children}
                 </Content>
             </ContentContainer>
