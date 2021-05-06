@@ -20,6 +20,12 @@ const Button = styled.button`
     font-weight: 600;
 
     ${colorStyles}
+
+    @media screen and (min-width: 48rem) {
+        min-width: 110px;
+        min-height: 110px;
+        font-size: 1.375rem;
+    }
 `;
 
 function RoundButton({ buttonColor, children }) {

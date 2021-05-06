@@ -4,17 +4,21 @@ import DustBackground from 'components/effects/DustBackground';
 import GlitchText from 'components/effects/GlitchText';
 
 const Section = styled.section`
-
+    width: 100%;
 `;
 
 const TitleGroup = styled.div`
     position: relative;
-    width: 100%;
+    width: 100vw;
     min-height: 100vh;
     display: flex;
     align-items: center;
 
     padding: 0 1rem;
+
+    @media screen and (min-width: 48rem) {
+        padding: 0 10%;
+    }
 `;
 
 const Mascot = styled.div`
@@ -52,6 +56,7 @@ const Title = styled.h1`
 
 const GlitchGroup = styled.div`
     width: 100%;
+
     @media screen and (min-width: 48rem) {
         display: flex;
         flex-wrap: wrap;
@@ -66,10 +71,17 @@ const ContentGroup = styled.div`
     justify-content: center;
     align-items: center;
     padding: 5rem 1rem;
+    overflow: hidden;
+
+    margin-bottom: 10rem;
 
     ${({ theme }) => css`
         color: ${theme.palette.black};
     `};
+
+    @media screen and (min-width: 48rem) {
+        padding: 5rem 10%;
+    }
 `;
 
 const Content = styled.div`
@@ -77,7 +89,11 @@ const Content = styled.div`
     font-size: 1.75rem;
 
     z-index: 10;
-    background-color: red;
+    //background-color: red;
+
+    @media screen and (min-width: 48rem) {
+        font-size: 2.5rem;
+    }
 `;
 
 const Description = styled.p`
@@ -99,7 +115,7 @@ function LandingSection() {
     return (
         <Section>
             <TitleGroup>
-                <Mascot></Mascot>
+                <Mascot aria-hidden></Mascot>
                 <Title>
                     <GlitchText>We</GlitchText>
                     <GlitchGroup>
@@ -115,7 +131,7 @@ function LandingSection() {
                         <Description key={index}>{description}</Description> 
                     )}
                 </Content>
-                <DustBackground />
+                <DustBackground /> 
             </ContentGroup>
         </Section>
     )
