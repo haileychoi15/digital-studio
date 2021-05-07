@@ -10,8 +10,13 @@ const FormContainer = styled.form`
 
 const SubmitButton = styled.div`
     position: absolute;
-    right: -18%;
-    bottom: -22%;
+    right: -50px;
+    bottom: -50px;
+
+    @media screen and (min-width: 48rem) {
+        right: -65px;
+        bottom: -65px;
+    }
 `;
 
 function Form() {

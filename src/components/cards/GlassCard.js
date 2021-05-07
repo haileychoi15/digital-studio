@@ -15,7 +15,7 @@ const Card = styled.div`
     }
 
     @media screen and (min-width: 48rem) {
-        padding: 3rem;
+        padding: 2.5rem;
 
         & + & {
             margin-left: 5rem;

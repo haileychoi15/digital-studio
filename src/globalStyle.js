@@ -49,6 +49,7 @@ const GlobalStyle = createGlobalStyle`
   }
   
   button, input, textarea, select, option {
+    padding: 0;
     outline: none;
     cursor: pointer;
   }

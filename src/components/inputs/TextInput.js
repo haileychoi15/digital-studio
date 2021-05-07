@@ -18,6 +18,16 @@ const InputContainer = styled.div`
     & + & {
         margin-top: 0.7rem;
     }
+
+    @media screen and (min-width: 48rem) {
+        padding: 0.7rem;
+        border-radius: 0.5rem;
+        font-size: 1rem;
+
+        & + & {
+            margin-top: 1rem;
+        }
+    }
 `;
 
 const Input = styled.input`
@@ -32,6 +42,10 @@ const Textarea = styled.textarea`
     height: 100px;
     border: none;
     background: none;
+
+    @media screen and (min-width: 48rem) {
+        height: 160px;
+    }
 `;
 
 function TextInput({ placeholder, value, setValue, textarea }) {

@@ -36,19 +36,47 @@ const ListItem = styled.li`
     }
 
     @media screen and (min-width: 48rem) {
+        font-size: calc(100vw * 0.028); //2.5rem;
+    }
+
+    @media screen and (min-width: 90rem) {
         font-size: 2.5rem;
+    }
+`;
+
+const GridContainer = styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+
+    @media screen and (min-width: 64rem) {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: flex-start;
     }
 `;
 
 const FormBlock = styled.div`
     width: 100%;
     padding: 0 5%;
+
+    @media screen and (min-width: 48rem) {
+        width: 40%;
+        min-width: 390px;
+        max-width: 460px;
+        padding: 0;
+    }
 `;
 
 const ContactList = styled.ul`
     width: fit-content;
 
     margin: 0 auto 2rem;
+
+    @media screen and (min-width: 64rem) {
+        margin: 0;
+    }
 `;
 
 function Landing() {
@@ -128,14 +156,16 @@ function Landing() {
                     )}
             </BasicSection>
             <BasicSection title="Let’s collaborate">
-                <ContactList>
-                    {contactList.map((contact, index) => 
-                        <ListItem key={index}>{contact}</ListItem>
-                    )}
-                </ContactList>
-                <FormBlock>
-                    <Form />
-                </FormBlock>
+                <GridContainer>
+                    <ContactList>
+                        {contactList.map((contact, index) => 
+                            <ListItem key={index}>{contact}</ListItem>
+                        )}
+                    </ContactList>
+                    <FormBlock>
+                        <Form />
+                    </FormBlock>
+                </GridContainer>
             </BasicSection>
         </Container>
     )
