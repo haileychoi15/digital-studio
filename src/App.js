@@ -10,7 +10,7 @@ function App() {
       palette: {
         black: '#000000',
         white: '#ffffff',
-        gray: '#dddddd',
+        gray: '#999999',
         primary: '#D1ED5D'
       }
     }}>

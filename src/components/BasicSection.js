@@ -6,7 +6,7 @@ const marginStyles = css`
     margin-bottom: 4rem;
 
     @media screen and (min-width: 48rem) {
-        margin-bottom: 6.5rem;
+        margin-bottom: 8rem;
     }
 `;
 
@@ -29,7 +29,7 @@ const Title = styled.h2`
     `};
 
     @media screen and (min-width: 48rem) {
-        font-size: 5rem;
+        font-size: 4.2rem;
         
 
         ${({ summary }) => summary && css`

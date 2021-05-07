@@ -50,7 +50,7 @@ const Title = styled.h1`
     @media screen and (min-width: 48rem) {
         right: 0;
         padding-right: 1rem;
-        font-size: 4.5rem;
+        font-size: 4.2rem;
     }
 `;
 

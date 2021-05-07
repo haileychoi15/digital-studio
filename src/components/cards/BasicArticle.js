@@ -12,7 +12,13 @@ const Container = styled.div`
     `} 
 
     & + & {
-        margin-top: 3rem;
+        margin-top: 2.5rem;
+    }
+
+    @media screen and (min-width: 48rem) {
+        & + & {
+            margin-top: 1rem;
+        }
     }
 `;
 

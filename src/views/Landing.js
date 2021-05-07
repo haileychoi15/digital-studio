@@ -28,10 +28,6 @@ const ListGroup = styled.div`
     width: 100%;
 `;
 
-const List = styled.ul`
-    
-`;
-
 const ListItem = styled.li`
     font-size: 1.3rem;
 
@@ -135,11 +131,11 @@ function Landing() {
             <BasicSection title="Skills & Tools">
                     <ListGroup>
                         {skillList.map((skills, index) => 
-                            <List key={index}>
+                            <ul key={index}>
                                 {skills.map((skill, index) => 
                                     <ListItem key={index}>{skill}</ListItem>
                                 )}
-                            </List>
+                            </ul>
                         )}
                     </ListGroup>
             </BasicSection>

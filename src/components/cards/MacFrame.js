@@ -5,7 +5,7 @@ const Container = styled.div`
     position: relative;
     width: 331px;
     height: 187.66px;
-    background-color: rgba(255,255,255,0.3);
+    background: none;
     flex-shrink: 0;
     transition: all 250ms;
 
@@ -23,12 +23,10 @@ const Container = styled.div`
             transform: translateY(-0.7rem);
         }
 
-        & + & {
-            margin-left: 2rem;
-        }
+        margin-top: 2.2rem; // 위로 transform 되는만큼 + roof
     }
 
-    @media screen and (min-width: 64rem) {
+    @media screen and (min-width: 75rem) {
         & + & {
             margin-left: 5rem;
         }
@@ -51,6 +49,13 @@ const Roof = styled.div`
         border: 1px solid ${theme.palette.gray};
         border-bottom: none;
     `};
+
+    @media screen and (min-width: 48rem) {
+        top: -1.4rem;
+        height: 1.4rem;
+        border-top-left-radius: 6px;
+        border-top-right-radius: 6px;
+    }
 `;
 
 const Circle = styled.div`
@@ -64,6 +69,15 @@ const Circle = styled.div`
 
     & + & {
         margin-left: 0.3rem;
+    }
+
+    @media screen and (min-width: 48rem) {
+        width: 7px;
+        height: 7px;
+
+        & + & {
+            margin-left: 0.4rem;
+        }
     }
 `;
 
