@@ -7,7 +7,7 @@ const colorStyles = css`
         color: ${theme.palette.white};
         background-color: ${theme.palette[buttonColor]};
         `: css`
-        color: ${theme.palette.primary};
+        color: ${theme.palette.secondary};
         background-color: ${theme.palette[buttonColor]};
     `};
 `;
@@ -17,7 +17,7 @@ const Button = styled.button`
     min-height: 80px;
     border-radius: 50%;
     font-size: 1.1rem;
-    font-weight: 600;
+    font-weight: 800;
     transition: all 250ms;
     &:hover {
         transform: scale(1.07);
@@ -32,11 +32,19 @@ const Button = styled.button`
     }
 `;
 
-function RoundButton({ buttonColor, children, isSubmit }) {
+function RoundButton({ buttonColor, children, isSubmit, onClick }) {
     return (
-        <Button type={isSubmit ? 'submit' : 'button'} buttonColor={buttonColor}>
-            {children}
-        </Button>
+        <>
+            {isSubmit ?
+                <Button type="submit" buttonColor={buttonColor}>
+                    {children}
+                </Button> :
+                <Button type="button" buttonColor={buttonColor} onClick={onClick}>
+                    {children}
+                </Button>
+            }
+            
+        </>
     )
 }
 

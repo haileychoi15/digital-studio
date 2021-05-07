@@ -1,9 +1,12 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
+import arrowLinear from 'assets/images/arrow-linear.svg';
 
 const Container = styled.div`
+    position: relative;
     display: flex;
     justify-content: flex-start;
+    align-items: center;
     width: 100%;
     line-height: 1.2;
 
@@ -15,6 +18,12 @@ const Container = styled.div`
         margin-top: 2.5rem;
     }
 
+    &:last-child {
+        img {
+            transform: rotate(90deg);
+        }
+    }
+
     @media screen and (min-width: 48rem) {
         & + & {
             margin-top: 1rem;
@@ -24,6 +33,10 @@ const Container = styled.div`
 
 const Article = styled.article`
     max-width:  65%;
+
+    ${({ align }) => align === 'left' && css`
+        margin-right: 5%;
+    `} 
 
     @media screen and (min-width: 48rem) {
         max-width: 40%;
@@ -50,6 +63,15 @@ const Description = styled.p`
     }
 `;
 
+const ArrowImage = styled.img`
+    width: auto;
+    height: 90px;
+
+    @media screen and (min-width: 48rem) {
+        height: 150px;
+    }
+`;
+
 function BasicArticle({ title, children, align }) {
     return (
         <Container align={align}>
@@ -57,6 +79,7 @@ function BasicArticle({ title, children, align }) {
                 <Title>{title}</Title>
                 <Description>{children}</Description>
             </Article>
+            {align === "left" && <ArrowImage src={arrowLinear} />}
         </Container>
     )
 }

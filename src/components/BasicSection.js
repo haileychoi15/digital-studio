@@ -12,10 +12,11 @@ const marginStyles = css`
 
 const Section = styled.section`
     position: relative;
-    margin-bottom: 10rem;
+    padding-top: 4rem;
+    margin-bottom: 6rem;
 
     @media screen and (min-width: 48rem) {
-        margin-bottom: 12rem;
+        margin-bottom: 8rem;
     }
 `;
 
@@ -120,9 +121,9 @@ const Content = styled.div`
     }
 `;
 
-function BasicSection({ title, summary, scroll, children }) {
+function BasicSection({ title, summary, scroll, children, id }) {
     return (
-        <Section>
+        <Section id={id}>
             <Title summary={summary}>{title}</Title>
             {summary && 
                 <Summary>

@@ -12,6 +12,7 @@ import Footer from 'components/Footer';
 import StampIcon from 'components/effects/StampIcon';
 import { useEventListener } from 'hooks/useEventListener';
 
+
 const Container = styled.div`
     width: 100vw;
     overflow: hidden;
@@ -172,18 +173,18 @@ function Landing() {
                     )}
                     {mobile ? 
                         <>
-                            <StampIcon type="smile" iconStyle={{ top: "10rem", left: "0", transform: "rotate(-45deg)" }} />
-                            <StampIcon type="heart" iconStyle={{ bottom: "5rem", left: "15rem", transform: "rotate(10deg)" }} />
-                            <StampIcon type="ghost" iconStyle={{ top: "6rem", right: "1rem", transform: "rotate(30deg)" }} />
+                            <StampIcon type="smile" color="primary" iconStyle={{ top: "10rem", left: "0", transform: "rotate(-45deg)" }} />
+                            <StampIcon type="heart" color="primary" iconStyle={{ bottom: "5rem", left: "15rem", transform: "rotate(10deg)" }} />
+                            <StampIcon type="ghost" color="primary" iconStyle={{ top: "6rem", right: "1rem", transform: "rotate(30deg)" }} />
                         </> :
                         <>
-                            <StampIcon type="smile" iconStyle={{ top: "18rem", left: "22.2%", transform: "rotate(15deg)" }} />
-                            <StampIcon type="heart" iconStyle={{ bottom: "3rem", left: "50%", transform: "rotate(10deg)" }} />
-                            <StampIcon type="ghost" iconStyle={{ top: "12.5rem", right: "25%", transform: "rotate(50deg)" }} />
+                            <StampIcon type="smile" color="primary" iconStyle={{ top: "18rem", left: "22.2%", transform: "rotate(15deg)" }} />
+                            <StampIcon type="heart" color="primary" iconStyle={{ bottom: "3rem", left: "50%", transform: "rotate(10deg)" }} />
+                            <StampIcon type="ghost" color="primary" iconStyle={{ top: "12.5rem", right: "25%", transform: "rotate(50deg)" }} />
                         </>
                     }
             </BasicSection>
-            <BasicSection title="Let’s collaborate">
+            <BasicSection title="Let’s collaborate" id="contact">
                 <GridContainer>
                     <ContactList>
                         {contactList.map((contact, index) => 

@@ -37,12 +37,17 @@ const ContactButton = styled.div`
 `;
 
 function Header() {
+
+    const handleButtonClick = () => {
+        window.location.href='#contact';
+    }
+
     return (
         <HeaderContainer>
             <Navigation>
                 <Logo>( virtual ) studio</Logo>
                 <ContactButton>
-                    <RoundButton buttonColor="primary">Contact</RoundButton>
+                    <RoundButton buttonColor="primary" onClick={handleButtonClick}>Contact</RoundButton>
                 </ContactButton>
             </Navigation>
         </HeaderContainer>

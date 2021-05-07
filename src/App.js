@@ -11,7 +11,8 @@ function App() {
         black: '#000000',
         white: '#ffffff',
         gray: '#999999',
-        primary: '#D1ED5D'
+        primary: '#D1ED5D',
+        secondary: '#B2FF75',
       }
     }}>
       <GlobalStyle />
