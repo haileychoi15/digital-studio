@@ -2,6 +2,7 @@ import React from 'react';
 import styled, { css } from 'styled-components';
 import DustBackground from 'components/effects/DustBackground';
 import GlitchText from 'components/effects/GlitchText';
+import StampIcon from 'components/effects/StampIcon';
 
 const Section = styled.section`
     width: 100%;
@@ -99,7 +100,7 @@ const Content = styled.div`
 const Description = styled.p`
     margin-bottom: 5rem;
 
-    &:last-child {
+    &:nth-of-type(3) {
         margin-bottom: 0;
     }
 `;
@@ -130,6 +131,9 @@ function LandingSection() {
                     {descriptionList.map((description, index) => 
                         <Description key={index}>{description}</Description> 
                     )}
+                    <StampIcon type="smile" iconStyle={{ top: "-4.2rem", right: "0", transform: "rotate(-45deg)" }} />
+                    <StampIcon type="heart" iconStyle={{ bottom: "-4.3rem", left: "-2rem", transform: "rotate(10deg)" }} />
+                    <StampIcon type="ghost" iconStyle={{ bottom: "-2.5rem", right: "0", transform: "rotate(30deg)" }} />
                 </Content>
                 <DustBackground /> 
             </ContentGroup>

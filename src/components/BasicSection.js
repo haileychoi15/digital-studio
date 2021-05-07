@@ -11,6 +11,7 @@ const marginStyles = css`
 `;
 
 const Section = styled.section`
+    position: relative;
     margin-bottom: 10rem;
 
     @media screen and (min-width: 48rem) {
@@ -97,7 +98,6 @@ const ContentContainer = styled.div`
 `;
 
 const Content = styled.div`
-    //display: flex;
     width: 100%;
     padding: 0 1rem;
 
