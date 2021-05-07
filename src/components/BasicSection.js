@@ -63,11 +63,36 @@ const Summary = styled.h3`
 
 const ContentContainer = styled.div`
     ${({ scroll }) => scroll && css`
-        overflow-x: scroll;
+        overflow: scroll;
+
+        &::-webkit-scrollbar {
+            width: 1px;
+            height: 2.5rem;               /* width of the entire scrollbar */
+        }
+
+        &::-webkit-scrollbar-track {
+            background: none;        /* color of the tracking area */
+        }
+
+        &::-webkit-scrollbar-thumb {
+            border-radius: 20px;       /* roundness of the scroll thumb */
+            border: 1rem solid black;
+            ${({ theme }) => css`
+                background-color: ${theme.palette.primary};
+            `}
+
+            background: linear-gradient(45deg, #D1ED5D, #B2FF75);
+        }
+
+        &::-webkit-scrollbar-corner {
+            ${({ theme }) => css`
+                color: ${theme.palette.black};
+            `}
+        }
     `}
 
     @media screen and (min-width: 64rem) {
-        overflow-x: unset;
+        overflow: unset;
     }
 `;
 

@@ -12,6 +12,7 @@ import Footer from 'components/Footer';
 
 const Container = styled.div`
     width: 100vw;
+    overflow: hidden;
 
     ${({ theme }) => css`
         color: ${theme.palette.white};

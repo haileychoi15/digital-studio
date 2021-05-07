@@ -9,7 +9,7 @@ const Section = styled.section`
 
 const TitleGroup = styled.div`
     position: relative;
-    width: 100vw;
+    width: 100%;
     min-height: 100vh;
     display: flex;
     align-items: center;
