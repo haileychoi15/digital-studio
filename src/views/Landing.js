@@ -8,6 +8,7 @@ import BasicArticle from 'components/cards/BasicArticle';
 import GlassCard from 'components/cards/GlassCard';
 import ProfileCard from 'components/cards/ProfileCard';
 import Form from 'components/Form';
+import Footer from 'components/Footer';
 
 const Container = styled.div`
     width: 100vw;
@@ -16,6 +17,9 @@ const Container = styled.div`
         color: ${theme.palette.white};
         background-color: ${theme.palette.black};
     `};
+
+    padding-bottom: 0.1px;
+    margin-bottom: 60px; // footer
 `;
 
 const ListGroup = styled.div`
@@ -167,6 +171,7 @@ function Landing() {
                     </FormBlock>
                 </GridContainer>
             </BasicSection>
+            <Footer />
         </Container>
     )
 }

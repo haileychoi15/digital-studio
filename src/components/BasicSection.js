@@ -2,15 +2,27 @@ import React from 'react';
 import styled, { css } from 'styled-components';
 import { ImQuotesLeft, ImQuotesRight } from "react-icons/im";
 
+const marginStyles = css`
+    margin-bottom: 4rem;
+
+    @media screen and (min-width: 48rem) {
+        margin-bottom: 6.5rem;
+    }
+`;
+
 const Section = styled.section`
     margin-bottom: 10rem;
+
+    @media screen and (min-width: 48rem) {
+        margin-bottom: 12rem;
+    }
 `;
 
 const Title = styled.h2`
     font-size: 2.375rem;
     text-align: center;
 
-    margin-bottom: 5rem;
+    ${marginStyles}
 
     ${({ summary }) => summary && css`
         margin-bottom: 1.2rem;
@@ -18,7 +30,7 @@ const Title = styled.h2`
 
     @media screen and (min-width: 48rem) {
         font-size: 5rem;
-        margin-bottom: 10rem;
+        
 
         ${({ summary }) => summary && css`
             margin-bottom: 1.5rem;
@@ -30,7 +42,8 @@ const Summary = styled.h3`
     text-align: center;
     font-size: 1rem;
     font-weight: 400;
-    margin-bottom: 5rem;
+
+    ${marginStyles}
 
     .quote-icon {
         position: relative;
@@ -45,8 +58,6 @@ const Summary = styled.h3`
             top: -4px;
             font-size: 1rem;
         }
-
-        margin-bottom: 10rem;
     }
 `;
 

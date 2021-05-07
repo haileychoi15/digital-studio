@@ -7,6 +7,7 @@ const Container = styled.div`
     height: 187.66px;
     background-color: rgba(255,255,255,0.3);
     flex-shrink: 0;
+    transition: all 250ms;
 
     margin-top: 1rem;
 
@@ -17,6 +18,10 @@ const Container = styled.div`
     @media screen and (min-width: 48rem) {
         width: 513px;
         height: 267.6px;
+
+        &:hover {
+            transform: translateY(-0.7rem);
+        }
 
         & + & {
             margin-left: 2rem;

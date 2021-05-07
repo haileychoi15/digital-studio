@@ -5,13 +5,14 @@ const Container = styled.div`
     display: flex;
     justify-content: flex-start;
     width: 100%;
+    line-height: 1.2;
 
     ${({ align }) => align === 'right' && css`
         justify-content: flex-end;
     `} 
 
     & + & {
-        margin-top: 4rem;
+        margin-top: 3rem;
     }
 `;
 
@@ -37,7 +38,6 @@ const Title = styled.h3`
 
 const Description = styled.p`
     font-size: 1rem;
-    //line-height: 1.8rem;
 
     @media screen and (min-width: 48rem) {
         font-size: 1.375rem;

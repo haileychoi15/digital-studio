@@ -18,6 +18,10 @@ const Button = styled.button`
     border-radius: 50%;
     font-size: 1.1rem;
     font-weight: 600;
+    transition: all 250ms;
+    &:hover {
+        transform: scale(1.07);
+    }
 
     ${colorStyles}
 

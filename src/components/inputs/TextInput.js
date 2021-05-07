@@ -9,10 +9,14 @@ const InputContainer = styled.div`
     border-radius: 6px;
     font-size: 0.75rem;
     background: none;
+    transition: all 250ms;
 
     ${({ theme }) => css`
         border: 1px solid ${theme.palette.white};
         color: ${theme.palette.white};
+        &:focus-within {
+            border: 1px solid ${theme.palette.primary};
+        }
     `};
 
     & + & {

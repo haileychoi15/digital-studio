@@ -28,6 +28,7 @@ const ContactButton = styled.div`
     position: absolute;
     top: 10px;
     right: 10px;
+    z-index: 10;
     
     @media screen and (min-width: 48rem) {
         top: 1.5rem;
@@ -36,9 +37,6 @@ const ContactButton = styled.div`
 `;
 
 function Header() {
-
-    //const glitchTextList = ['design', 'and', 'develope'];
-
     return (
         <HeaderContainer>
             <Navigation>
