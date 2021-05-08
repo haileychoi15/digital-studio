@@ -131,9 +131,9 @@ function LandingSection() {
                     {descriptionList.map((description, index) => 
                         <Description key={index}>{description}</Description> 
                     )}
-                    <StampIcon type="happy" color="secondary" iconStyle={{ top: "-4.2rem", right: "0", transform: "rotate(-45deg)" }} />
-                    <StampIcon type="heart" color="secondary" iconStyle={{ bottom: "-4.3rem", left: "-2rem", transform: "rotate(10deg)" }} />
-                    <StampIcon type="ghost" color="secondary" iconStyle={{ bottom: "-2.5rem", right: "0", transform: "rotate(30deg)" }} />
+                    <StampIcon type="happy" color="secondary" positions={{ top: "-9.2rem", right: "0" }} />
+                    <StampIcon type="heart" color="secondary" positions={{ bottom: "-9.3rem", left: "-2rem" }} />
+                    <StampIcon type="ghost" color="secondary" positions={{ bottom: "10%", right: "30%" }} />
                 </Content>
                 <DustBackground /> 
             </ContentGroup>

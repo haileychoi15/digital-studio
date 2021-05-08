@@ -173,14 +173,14 @@ function Landing() {
                     )}
                     {mobile ? 
                         <>
-                            <StampIcon type="smile" color="primary" iconStyle={{ top: "10rem", left: "0", transform: "rotate(-45deg)" }} />
-                            <StampIcon type="heart" color="primary" iconStyle={{ bottom: "5rem", left: "15rem", transform: "rotate(10deg)" }} />
-                            <StampIcon type="ghost" color="primary" iconStyle={{ top: "6rem", right: "1rem", transform: "rotate(30deg)" }} />
+                            <StampIcon type="smile" color="primary" positions={{ top: "10%", left: "0", }} />
+                            <StampIcon type="heart" color="primary" positions={{ bottom: "-40%", left: "15rem" }} />
+                            <StampIcon type="ghost" color="primary" positions={{ top: "60%", right: "1rem" }} />
                         </> :
                         <>
-                            <StampIcon type="smile" color="primary" iconStyle={{ top: "18rem", left: "22.2%", transform: "rotate(15deg)" }} />
-                            <StampIcon type="heart" color="primary" iconStyle={{ bottom: "3rem", left: "50%", transform: "rotate(10deg)" }} />
-                            <StampIcon type="ghost" color="primary" iconStyle={{ top: "12.5rem", right: "25%", transform: "rotate(50deg)" }} />
+                            <StampIcon type="smile" color="primary" positions={{ top: "18rem", left: "22.2%" }} />
+                            <StampIcon type="heart" color="primary" positions={{ bottom: "-50%", left: "50%" }} />
+                            <StampIcon type="ghost" color="primary" positions={{ top: "65%", right: "25%" }} />
                         </>
                     }
             </BasicSection>
