@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import styled, { css } from 'styled-components';
 import Header from 'components/Header';
 import LandingSection from 'components/LandingSection';
@@ -10,6 +10,7 @@ import ProfileCard from 'components/cards/ProfileCard';
 import Form from 'components/Form';
 import Footer from 'components/Footer';
 import StampIcon from 'components/effects/StampIcon';
+import ScrollTopButton from 'components/buttons/ScrollTopButton';
 import { useEventListener } from 'hooks/useEventListener';
 
 
@@ -121,10 +122,12 @@ function Landing() {
 
     const contactList = [
         'virtual.studio.hi@gmail.com',
-        '010-9686-6440'
+        '010-9686-6440',
+        'instagram'
     ]
 
     const [mobile, setMobile] = useState(0);
+    const landingSection = useRef();
 
     const handleResize = () => {
         const innerWidth = window.innerWidth;
@@ -140,7 +143,7 @@ function Landing() {
     return (
         <Container>
             <Header />
-            <LandingSection />
+            <LandingSection forwardRef={landingSection} />
             <BasicSection title="Experiments" scroll>
                     <MacFrame></MacFrame>
                     <MacFrame></MacFrame>
@@ -197,6 +200,7 @@ function Landing() {
                 </GridContainer>
             </BasicSection>
             <Footer />
+            <ScrollTopButton observeTarget={landingSection} />
         </Container>
     )
 }

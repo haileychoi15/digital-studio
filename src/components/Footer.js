@@ -20,7 +20,12 @@ const FooterContainer = styled.footer`
 
 const Description = styled.p`
     position: relative;
+    font-size: 0.725rem;
     z-index: 10;
+
+    @media screen and (min-width: 48rem) {
+        font-size: 1rem;
+    }
 `;
 
 function Footer() {

@@ -105,7 +105,7 @@ const Description = styled.p`
     }
 `;
 
-function LandingSection() {
+function LandingSection({ forwardRef }) {
 
     const descriptionList = [
         '(virtual) studio is a Seoul based digital studio inspired by cross-border subcultures.',
@@ -114,7 +114,7 @@ function LandingSection() {
     ];
 
     return (
-        <Section>
+        <Section ref={forwardRef}>
             <TitleGroup>
                 <Mascot aria-hidden></Mascot>
                 <Title>

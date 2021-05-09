@@ -43,14 +43,14 @@ const Title = styled.h2`
 const Summary = styled.h3`
     text-align: center;
     font-size: 1rem;
-    font-weight: 400;
+    font-weight: 300;
 
     ${marginStyles}
 
     .quote-icon {
         position: relative;
         top: -2px;
-        font-size: 0.75rem;
+        font-size: 0.725rem;
     }
 
     @media screen and (min-width: 48rem) {
@@ -121,9 +121,9 @@ const Content = styled.div`
     }
 `;
 
-function BasicSection({ title, summary, scroll, children, id }) {
+function BasicSection({ title, summary, scroll, children, id, forwardRef }) {
     return (
-        <Section id={id}>
+        <Section id={id} ref={forwardRef}>
             <Title summary={summary}>{title}</Title>
             {summary && 
                 <Summary>
