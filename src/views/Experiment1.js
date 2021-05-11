@@ -452,14 +452,8 @@ function Experiment1() {
     const [textAlign, setTextAlign] = useState('left');
 
     const history = useHistory();
-    const html = document.querySelector('html');
-
-    useEffect(() => {
-        window.scrollTo(0,0);
-        html.style.scrollBehavior = 'smooth';
-    }, []);
-
-    useComponentWillMount(() => html.style.scrollBehavior = 'initial');
+    
+    useComponentWillMount(() =>  window.scrollTo(0,0));
 
     return (
         <Container>

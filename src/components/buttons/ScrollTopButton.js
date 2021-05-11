@@ -71,7 +71,7 @@ function ScrollTopButton({ observeTarget }) {
         <ButtonContainer ref={button}>
             <HoverEffect>
                 <GlassCard isCircle>
-                    <Button onClick={() => window.scrollTo(0, 0)}>
+                    <Button onClick={() => window.scroll({ top: 0, left: 0, behavior: "smooth" })}>
                         <HiOutlineArrowUp />
                     </Button>
                 </GlassCard>

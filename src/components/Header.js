@@ -39,7 +39,8 @@ const ContactButton = styled.div`
 function Header() {
 
     const handleButtonClick = () => {
-        window.location.href='#contact';
+        const contact = document.querySelector('#contact');
+        contact.scrollIntoView({ block: 'start', behavior: 'smooth' });
     }
 
     return (
