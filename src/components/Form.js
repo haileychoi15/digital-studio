@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 import RoundButton from 'components/buttons/RoundButton';
 import TextInput from 'components/inputs/TextInput';
 import GlassCard from 'components/cards/GlassCard';

@@ -9,6 +9,7 @@ const ButtonContainer = styled.div`
     right: 0.7rem;
     bottom: 0.7rem;
     z-index: 999;
+    transition: all 250ms;
 
     @media screen and (min-width: 48rem) {
         right: 1rem;
@@ -64,7 +65,7 @@ function ScrollTopButton({ observeTarget }) {
         }
     }
 
-    useIntersectionObserver([observeTarget], { threshold: 0.45 }, () => handler(button), () => antiHandler(button));
+    useIntersectionObserver([observeTarget], { threshold: 0.4 }, () => handler(button), () => antiHandler(button));
 
     return (
         <ButtonContainer ref={button}>

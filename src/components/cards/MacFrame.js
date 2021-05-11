@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import styled, { css } from 'styled-components';
 
 const Container = styled.div`
@@ -90,7 +91,7 @@ const Article = styled.article`
     `};
 `;
 
-function MacFrame() {
+function MacFrame({ linkTo }) {
     return (
         <Container>
             <Roof aria-hidden>
@@ -98,7 +99,9 @@ function MacFrame() {
                     <Circle key={index}></Circle>
                 )}
             </Roof>
-            <Article></Article>
+            <Link to={linkTo}>
+                <Article></Article>
+            </Link>
         </Container>
     )
 }

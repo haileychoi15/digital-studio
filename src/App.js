@@ -3,6 +3,7 @@ import GlobalStyle from 'globalStyle';
 import { ThemeProvider } from 'styled-components';
 import { BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import Landing from 'views/Landing';
+import Experiment1 from 'views/Experiment1';
 
 function App() {
   return (
@@ -18,9 +19,8 @@ function App() {
       <GlobalStyle />
       <Router>
         <Switch>
-          <Route>
-            <Landing />
-          </Route>
+          <Route exact path="/" component={Landing} />
+          <Route exact path="/experiment1" component={Experiment1} />
         </Switch>
       </Router>
     </ThemeProvider>

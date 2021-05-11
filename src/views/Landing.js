@@ -13,7 +13,6 @@ import StampIcon from 'components/effects/StampIcon';
 import ScrollTopButton from 'components/buttons/ScrollTopButton';
 import { useEventListener } from 'hooks/useEventListener';
 
-
 const Container = styled.div`
     width: 100vw;
     overflow: hidden;
@@ -86,6 +85,17 @@ const ContactList = styled.ul`
 
 function Landing() {
 
+    const macFrameList = [
+        {
+            title: 'experiment1',
+            address: '/experiment1',
+        },
+        {
+            title: 'experiment2',
+            address: '/experiment2',
+        },
+    ]
+
     const skillList = [
         ['HTML5', 'CSS3', 'JavaScript', 'TypeScript'],
         ['Vue', 'React', 'WebGL', 'PWA', 'Flutter', 'Express'],
@@ -145,8 +155,9 @@ function Landing() {
             <Header />
             <LandingSection forwardRef={landingSection} />
             <BasicSection title="Experiments" scroll>
-                    <MacFrame></MacFrame>
-                    <MacFrame></MacFrame>
+                {macFrameList.map((article, index) => 
+                    <MacFrame key={index} linkTo={article.address} />
+                )}
             </BasicSection>
             <BasicSection title="Skills & Tools">
                     <ListGroup>
