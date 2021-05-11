@@ -16,6 +16,7 @@ import { useEventListener } from 'hooks/useEventListener';
 const Container = styled.div`
     width: 100vw;
     overflow: hidden;
+    scroll-behavior: smooth;
 
     ${({ theme }) => css`
         color: ${theme.palette.white};

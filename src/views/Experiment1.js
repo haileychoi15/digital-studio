@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import styled, { css } from 'styled-components';
 import bali from 'assets/images/bali.jpg'
 import { BsArrowRight } from 'react-icons/bs';
+import { useComponentWillMount } from 'hooks/useComponentWillMount';
 
 const Container = styled.div`
     width: 100vw;
@@ -12,6 +13,7 @@ const Container = styled.div`
     color: #FF2323;
     background-color: #FFF5EF;
     overflow: hidden;
+    scroll-behavior: initial;
 
     @media screen and (min-width: 48rem) {
         font-size: 1.875rem;
@@ -450,6 +452,14 @@ function Experiment1() {
     const [textAlign, setTextAlign] = useState('left');
 
     const history = useHistory();
+    const html = document.querySelector('html');
+
+    useEffect(() => {
+        window.scrollTo(0,0);
+        html.style.scrollBehavior = 'smooth';
+    }, []);
+
+    useComponentWillMount(() => html.style.scrollBehavior = 'initial');
 
     return (
         <Container>
