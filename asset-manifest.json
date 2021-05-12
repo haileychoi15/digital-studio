@@ -1,22 +1,25 @@
 {
   "files": {
-    "main.js": "/digital-studio/static/js/main.ee82b539.chunk.js",
-    "main.js.map": "/digital-studio/static/js/main.ee82b539.chunk.js.map",
-    "runtime-main.js": "/digital-studio/static/js/runtime-main.d6d83376.js",
-    "runtime-main.js.map": "/digital-studio/static/js/runtime-main.d6d83376.js.map",
-    "static/js/2.029ee93b.chunk.js": "/digital-studio/static/js/2.029ee93b.chunk.js",
-    "static/js/2.029ee93b.chunk.js.map": "/digital-studio/static/js/2.029ee93b.chunk.js.map",
-    "static/js/3.4d45afdb.chunk.js": "/digital-studio/static/js/3.4d45afdb.chunk.js",
-    "static/js/3.4d45afdb.chunk.js.map": "/digital-studio/static/js/3.4d45afdb.chunk.js.map",
+    "main.js": "/digital-studio/static/js/main.0af3e1b7.chunk.js",
+    "main.js.map": "/digital-studio/static/js/main.0af3e1b7.chunk.js.map",
+    "runtime-main.js": "/digital-studio/static/js/runtime-main.49d01d49.js",
+    "runtime-main.js.map": "/digital-studio/static/js/runtime-main.49d01d49.js.map",
+    "static/js/2.c3698d69.chunk.js": "/digital-studio/static/js/2.c3698d69.chunk.js",
+    "static/js/2.c3698d69.chunk.js.map": "/digital-studio/static/js/2.c3698d69.chunk.js.map",
+    "static/js/3.e1ac80a7.chunk.js": "/digital-studio/static/js/3.e1ac80a7.chunk.js",
+    "static/js/3.e1ac80a7.chunk.js.map": "/digital-studio/static/js/3.e1ac80a7.chunk.js.map",
     "index.html": "/digital-studio/index.html",
-    "static/js/2.029ee93b.chunk.js.LICENSE.txt": "/digital-studio/static/js/2.029ee93b.chunk.js.LICENSE.txt",
+    "static/js/2.c3698d69.chunk.js.LICENSE.txt": "/digital-studio/static/js/2.c3698d69.chunk.js.LICENSE.txt",
     "static/media/arrow-linear.5446b662.svg": "/digital-studio/static/media/arrow-linear.5446b662.svg",
     "static/media/bali.56d24cd0.jpg": "/digital-studio/static/media/bali.56d24cd0.jpg",
-    "static/media/circle-serif.b8b45339.svg": "/digital-studio/static/media/circle-serif.b8b45339.svg"
+    "static/media/circle-serif.b8b45339.svg": "/digital-studio/static/media/circle-serif.b8b45339.svg",
+    "static/media/estele-memoji.97246976.svg": "/digital-studio/static/media/estele-memoji.97246976.svg",
+    "static/media/experiment1.ea15880c.png": "/digital-studio/static/media/experiment1.ea15880c.png",
+    "static/media/hailey-memoji.572c04d7.svg": "/digital-studio/static/media/hailey-memoji.572c04d7.svg"
   },
   "entrypoints": [
-    "static/js/runtime-main.d6d83376.js",
-    "static/js/2.029ee93b.chunk.js",
-    "static/js/main.ee82b539.chunk.js"
+    "static/js/runtime-main.49d01d49.js",
+    "static/js/2.c3698d69.chunk.js",
+    "static/js/main.0af3e1b7.chunk.js"
   ]
 }
