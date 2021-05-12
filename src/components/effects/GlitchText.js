@@ -209,7 +209,7 @@ const Effect = styled.div`
 function GlitchText({ children }) {
     return (
         <Wrapper>
-            <Effect className="" data-text={children}>{children}</Effect>
+            <Effect className="active" data-text={children}>{children}</Effect>
         </Wrapper>
     )
 }

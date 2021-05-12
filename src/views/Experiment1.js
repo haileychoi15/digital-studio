@@ -522,7 +522,7 @@ function Experiment1() {
                 <Circle isColored size="small" style={{ top: "-40px", left: "8rem", transform: `translate(0, ${offsetY * 0.1}px)` }}></Circle>
                 <HeaderTitle>Serif</HeaderTitle>
                 <HeaderDescription loaded={loaded}>Serif is <br /> the new red</HeaderDescription>
-                <HeaderAside style={{ top: "1rem", right: "2.5rem", transformOrigin: "top right" }}>Lora</HeaderAside>
+                <HeaderAside style={{ top: "1rem", right: "3.5rem", transformOrigin: "top right" }}>Lora</HeaderAside>
                 <HeaderAside style={{ bottom: "0.2rem", left: "1rem", transformOrigin: "top left" }}>font-family</HeaderAside>
                 <BackgroundImage aria-hidden>
                     <Image  loaded={loaded} style={{ backgroundImage: `url(${bali})` }}></Image>

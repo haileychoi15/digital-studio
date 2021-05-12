@@ -91,7 +91,12 @@ const Article = styled.article`
     `};
 `;
 
-function MacFrame({ linkTo }) {
+const Image = styled.img`
+    width: 100%;
+    height: 100%;
+`;
+
+function MacFrame({ title, linkTo, thumbnail }) {
     return (
         <Container>
             <Roof aria-hidden>
@@ -100,7 +105,9 @@ function MacFrame({ linkTo }) {
                 )}
             </Roof>
             <Link to={linkTo}>
-                <Article></Article>
+                <Article>
+                    <Image src={thumbnail} alt={title} />
+                </Article>
             </Link>
         </Container>
     )

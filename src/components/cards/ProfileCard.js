@@ -13,9 +13,12 @@ const Image = styled.div`
     width: 150px;
     height: 150px;
     border-radius: 50%;
+    background-position: center;
+    background-size: 100%;
+    border: 1px solid rgba(211, 211, 211, 0.25);
 
     ${({ theme }) => css`
-        border: 1px solid ${theme.palette.black};
+        background-color: ${theme.palette.black};
     `};
 
     margin: 0 auto 1.2rem;

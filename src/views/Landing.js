@@ -13,6 +13,9 @@ import StampIcon from 'components/effects/StampIcon';
 import ScrollTopButton from 'components/buttons/ScrollTopButton';
 import { useEventListener } from 'hooks/useEventListener';
 import smoothscroll from 'smoothscroll-polyfill';
+import experiment1 from 'assets/images/experiment1.png';
+import haileyMemoji from 'assets/images/hailey-memoji.svg';
+import esteleMemoji from 'assets/images/estele-memoji.svg';
 
 const Container = styled.div`
     width: 100vw;
@@ -91,10 +94,12 @@ function Landing() {
         {
             title: 'experiment1',
             address: '/experiment1',
+            thumbnail: experiment1,
         },
         {
             title: 'experiment2',
             address: '/experiment2',
+            thumbnail: experiment1,
         },
     ]
 
@@ -122,12 +127,12 @@ function Landing() {
     const teamList = [
         {
             name: 'Hailey',
-            image: '',
+            image: haileyMemoji,
             features: ['UI / UX designer', 'Front-end developer']
         },
         {
             name: 'Estele',
-            image: '',
+            image: esteleMemoji,
             features: ['Front-end developer', 'iOS / Android developer']
         }
     ]
@@ -159,7 +164,7 @@ function Landing() {
             <LandingSection forwardRef={landingSection} />
             <BasicSection title="Experiments" scroll>
                 {macFrameList.map((article, index) => 
-                    <MacFrame key={index} linkTo={article.address} />
+                    <MacFrame key={index} title={article.title} linkTo={article.address} thumbnail={article.thumbnail} />
                 )}
             </BasicSection>
             <BasicSection title="Skills & Tools">

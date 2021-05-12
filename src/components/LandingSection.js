@@ -33,7 +33,8 @@ const Mascot = styled.div`
 const Title = styled.h1`
     position: absolute;
     top: 50%;
-    right: 0;
+    //right: 0;
+    right: 10%;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -116,7 +117,7 @@ function LandingSection({ forwardRef }) {
     return (
         <Section ref={forwardRef}>
             <TitleGroup>
-                <Mascot aria-hidden></Mascot>
+                {/* <Mascot aria-hidden></Mascot> */}
                 <Title>
                     <GlitchText>We</GlitchText>
                     <GlitchGroup>
