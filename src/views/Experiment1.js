@@ -5,6 +5,7 @@ import bali from 'assets/images/bali.jpg'
 import circleText from 'assets/images/circle-serif.svg'
 import { BsArrowRight } from 'react-icons/bs';
 import { useComponentWillMount } from 'hooks/useComponentWillMount';
+import { useEventListener } from 'hooks/useEventListener';
 
 const Container = styled.div`
     width: 100vw;
@@ -108,6 +109,13 @@ const HeaderDescription = styled.p`
     font-weight: 400;
     padding: 0;
     z-index: 10;
+    transition: all 500ms;
+    transition-delay: 1000ms;
+    transform: translate(-100vw, 0);
+
+    ${({ loaded }) => loaded && css`
+        transform: translate(0, 0);
+    `}; 
 
     @media screen and (min-width: 48rem) {
         padding: 0 10% 0 5%;
@@ -128,6 +136,7 @@ const circleSizeStyles = css`
 `;
 
 const Circle = styled.div`
+    //position: fixed;
     position: absolute;
     border: 1px solid #FF2323;
     border-radius: 50%;
@@ -189,6 +198,13 @@ const Image = styled.div`
     height: 282px;
     background-position: center;
     background-size: 100%;
+    transition: all 500ms;
+    transition-delay: 500ms;
+    transform: translate(100vw, 0);
+
+    ${({ loaded }) => loaded && css`
+        transform: translate(0, 0);
+    `}; 
 
     @media screen and (min-width: 48rem) {
         width: 383px;
@@ -418,12 +434,14 @@ const Footer = styled.footer`
         justify-content: space-between;
         align-items: flex-start;
         font-size: 1.375rem;
+        padding: 2rem;
     }
 `;
 
 const GoBackButton = styled.button`
     display: flex;
     align-items: center;
+
     margin-bottom: 1rem;
 
     .arrow-icon {
@@ -478,28 +496,38 @@ function Experiment1() {
         }
     ];
 
-    const [fontSize, setFontSize] = useState(30);
+    const [fontSize, setFontSize] = useState(20);
     const [fontWeight, setFontWeight] = useState('400');
     const [fontStyle, setFontStyle] = useState('normal');
     const [textAlign, setTextAlign] = useState('left');
+    const [offsetY, setOffsetY] = useState(0);
+    const [loaded, setLoaded] = useState(false);
 
-    const history = useHistory();
+    const history = useHistory();    
 
+    useEffect(() => {
+        setLoaded(true);
+    }, []);
+
+    const handleScroll = () => {
+        setOffsetY(window.pageYOffset);
+    }
+
+    useEventListener(window, 'scroll', handleScroll);
     useComponentWillMount(() =>  window.scrollTo(0,0));
 
     return (
         <Container>
             <Header>
-                <Circle isColored size="small" style={{ top: "-40px", left: "10rem" }}></Circle>
+                <Circle isColored size="small" style={{ top: "-40px", left: "8rem", transform: `translate(0, ${offsetY * 0.1}px)` }}></Circle>
                 <HeaderTitle>Serif</HeaderTitle>
-                <HeaderDescription>Serif is <br /> the new red</HeaderDescription>
-                <HeaderAside style={{ top: "1rem", right: "2.5rem", transformOrigin: "top right" }}>fonts</HeaderAside>
-                <HeaderAside style={{ bottom: "0.2rem", left: "1rem", transformOrigin: "top left" }}>typography matters</HeaderAside>
+                <HeaderDescription loaded={loaded}>Serif is <br /> the new red</HeaderDescription>
+                <HeaderAside style={{ top: "1rem", right: "2.5rem", transformOrigin: "top right" }}>Lora</HeaderAside>
+                <HeaderAside style={{ bottom: "0.2rem", left: "1rem", transformOrigin: "top left" }}>font-family</HeaderAside>
                 <BackgroundImage aria-hidden>
-                    <Image style={{ backgroundImage: `url(${bali})` }}></Image>
-                    <Circle isColored size="big" style={{ top: "2rem", right: "-150px", zIndex: "-1" }}></Circle>
+                    <Image  loaded={loaded} style={{ backgroundImage: `url(${bali})` }}></Image>
+                    <Circle isColored size="big" style={{ top: "10%", right: "-150px", zIndex: "-1", transform: `translate(0, ${offsetY * 0.2}px)` }}></Circle>
                     <CircleText style={{ backgroundImage: `url(${circleText})` }}></CircleText>
-                    {/* <Circle isColored={false} size="small" style={{ bottom: "-40px", right: "-40px" }}></Circle> */}
                 </BackgroundImage>
             </Header>
             <div>
@@ -527,7 +555,15 @@ function Experiment1() {
                             )}
                         </List>
                     </ListGroup>
-                    <Circle isColored size="big" style={{ top: "-30%", right: "-150px" }}></Circle>
+                    <Circle isColored size="big" style={{ top: "-25%", left: "1250px", transform: `translate(0, ${offsetY * -0.1}px)` }}></Circle>
+                </Section>
+                <Section>
+                    <SectionTitle>Today's serif : Lora</SectionTitle>
+                    <p>Lora is a well-balanced contemporary serif with roots in calligraphy. It is a text typeface with moderate contrast well suited for body text.
+                        A paragraph set in Lora will make a memorable appearance because of its brushed curves in contrast with driving serifs. The overall typographic voice of Lora perfectly conveys the mood of a modern-day story, or an art essay.
+                        Technically Lora is optimised for screen appearance, and works equally well in print.
+                        In March 2019, the family has been updated to a variable font family. Lora is designed by&nbsp;
+                        <a href="https://fonts.google.com/?query=Cyreal" target="_blank" style={{ color: "inherit", textDecoration: "underline" }}>Cyreal</a>.</p>
                 </Section>
                 <Section style={{ color: "#FFF5EF", backgroundColor: "#FF2323" }}>
                     <TesterSection>
@@ -566,7 +602,7 @@ function Experiment1() {
                                     <div>Size</div>
                                     <div>{fontSize}px</div>
                                 </ListGroup>
-                                <input type="range" min="20" max="40" value={fontSize} onChange={(e) => setFontSize(e.target.value)} />
+                                <input type="range" min="10" max="30" value={fontSize} onChange={(e) => setFontSize(e.target.value)} />
                             </FontController>
                             <div>
                                 <ListGroup>

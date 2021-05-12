@@ -12,6 +12,7 @@ import Footer from 'components/Footer';
 import StampIcon from 'components/effects/StampIcon';
 import ScrollTopButton from 'components/buttons/ScrollTopButton';
 import { useEventListener } from 'hooks/useEventListener';
+import smoothscroll from 'smoothscroll-polyfill';
 
 const Container = styled.div`
     width: 100vw;
@@ -147,6 +148,7 @@ function Landing() {
 
     useEffect(() => {
         handleResize();
+        smoothscroll.polyfill();
     }, []);
 
     useEventListener(window, 'resize', handleResize);
