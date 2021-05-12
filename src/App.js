@@ -1,7 +1,7 @@
 import React from 'react';
 import GlobalStyle from 'globalStyle';
 import { ThemeProvider } from 'styled-components';
-import { BrowserRouter as Router, Route, Switch} from 'react-router-dom';
+import { HashRouter as Router, Route, Switch} from 'react-router-dom';
 import Landing from 'views/Landing';
 import Experiment1 from 'views/Experiment1';
 
