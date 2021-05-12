@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import styled, { css } from 'styled-components';
 import bali from 'assets/images/bali.jpg'
+import circleText from 'assets/images/circle-serif.svg'
 import { BsArrowRight } from 'react-icons/bs';
 import { useComponentWillMount } from 'hooks/useComponentWillMount';
 
@@ -137,6 +138,37 @@ const Circle = styled.div`
     ${({ isColored }) => !isColored && css`
         background: none;
     `}
+`;
+
+const CircleText = styled.div`
+    position: absolute;
+    right: 0;
+    bottom: -100px;
+    border-radius: 50%;
+    background: none;
+    width: 150px;
+    height: 150px;
+    background-position: center;
+    background-size: 100%;
+
+    animation-name: rotateCircle;
+    animation-duration: 10s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+
+    @keyframes rotateCircle {
+        from {
+            transform: rotate(0);
+        }
+        to {
+            transform: rotate(360deg);
+        }
+    }
+
+    @media screen and (min-width: 48rem) {
+        right: -75px;
+        bottom: -75px;
+    }
 `;
 
 const BackgroundImage = styled.div`
@@ -452,7 +484,7 @@ function Experiment1() {
     const [textAlign, setTextAlign] = useState('left');
 
     const history = useHistory();
-    
+
     useComponentWillMount(() =>  window.scrollTo(0,0));
 
     return (
@@ -466,7 +498,8 @@ function Experiment1() {
                 <BackgroundImage aria-hidden>
                     <Image style={{ backgroundImage: `url(${bali})` }}></Image>
                     <Circle isColored size="big" style={{ top: "2rem", right: "-150px", zIndex: "-1" }}></Circle>
-                    <Circle isColored={false} size="small" style={{ bottom: "-40px", right: "-40px" }}></Circle>
+                    <CircleText style={{ backgroundImage: `url(${circleText})` }}></CircleText>
+                    {/* <Circle isColored={false} size="small" style={{ bottom: "-40px", right: "-40px" }}></Circle> */}
                 </BackgroundImage>
             </Header>
             <div>
