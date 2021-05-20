@@ -6,7 +6,7 @@ const Container = styled.div`
     position: relative;
     display: flex;
     justify-content: flex-start;
-    align-items: center;
+    align-items: flex-end;
     width: 100%;
     line-height: 1.2;
 
@@ -15,18 +15,24 @@ const Container = styled.div`
     `} 
 
     & + & {
-        margin-top: 2.5rem;
+        margin-top: 3rem;
     }
 
     &:last-child {
+        align-items: flex-start;
         img {
             transform: rotate(90deg);
         }
     }
 
     @media screen and (min-width: 48rem) {
+        align-items: center;
+        &:last-child {
+            align-items: center;
+        }
+
         & + & {
-            margin-top: 1rem;
+            margin-top: 2rem;
         }
     }
 `;

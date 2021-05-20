@@ -46,7 +46,7 @@ function Header() {
     return (
         <HeaderContainer>
             <Navigation>
-                <Logo>( virtual ) studio</Logo>
+                <Logo>Pool Studio</Logo>
                 <ContactButton>
                     <RoundButton buttonColor="primary" onClick={handleButtonClick}>Contact</RoundButton>
                 </ContactButton>

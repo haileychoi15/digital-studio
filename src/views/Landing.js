@@ -15,7 +15,7 @@ import { useEventListener } from 'hooks/useEventListener';
 import smoothscroll from 'smoothscroll-polyfill';
 import experiment1 from 'assets/images/experiment1.png';
 import haileyMemoji from 'assets/images/hailey-memoji.svg';
-import esteleMemoji from 'assets/images/estele-memoji.svg';
+import estelleMemoji from 'assets/images/estelle-memoji.svg';
 
 const Container = styled.div`
     width: 100vw;
@@ -131,14 +131,14 @@ function Landing() {
             features: ['UI / UX designer', 'Front-end developer']
         },
         {
-            name: 'Estele',
-            image: esteleMemoji,
+            name: 'Estelle',
+            image: estelleMemoji,
             features: ['Front-end developer', 'iOS / Android developer']
         }
     ]
 
     const contactList = [
-        'virtual.studio.hi@gmail.com',
+        'pool.digital.studio@gmail.com',
         '010-9686-6440',
         'instagram'
     ]

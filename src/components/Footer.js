@@ -31,7 +31,7 @@ const Description = styled.p`
 function Footer() {
     return (
         <FooterContainer>
-            <Description>© 2021, Virtual Studio. All rights reserved.</Description>
+            <Description>© 2021, Pool Studio. All rights reserved.</Description>
             <DustBackground /> 
         </FooterContainer>
     )
