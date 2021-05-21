@@ -4,6 +4,7 @@ import { ThemeProvider } from 'styled-components';
 import { HashRouter as Router, Route, Switch} from 'react-router-dom';
 import Landing from 'views/Landing';
 import Experiment1 from 'views/Experiment1';
+import Experiment2 from 'views/Experiment2';
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
         <Switch>
           <Route exact path="/" component={Landing} />
           <Route exact path="/experiment1" component={Experiment1} />
+          <Route exact path="/experiment2" component={Experiment2} />
         </Switch>
       </Router>
     </ThemeProvider>
