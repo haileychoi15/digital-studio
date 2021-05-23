@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { useHistory } from 'react-router-dom';
 import styled, { css } from 'styled-components';
 //import * as Tone from 'tone';
 import { useEventListener } from 'hooks/useEventListener';
@@ -15,7 +16,7 @@ const Container = styled.div`
     //font-family: 'Lora', serif;
     font-size: 1rem;
     font-weight: 400;
-    color: #c2c4c4;
+    color: #b0b0b0;
     background-color: #e8ebed;
     overflow: hidden;
 
@@ -35,7 +36,7 @@ const Container = styled.div`
     border-radius: 22px;
     background: none;
     cursor: pointer;
-    transition: all 450ms ease-in;
+    transition: all 450ms cubic-bezier(0.645, 0.045, 0.355, 1);
   }
 
   input[type=range]:focus {
@@ -69,13 +70,49 @@ const Container = styled.div`
   }
 `;
 
+const Mobile = styled.div`
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+    height: 100%;
+    padding: 2rem;
+    box-shadow: 12px 12px 24px 0 rgba(163, 177, 198, 0.5),
+        -12px -12px 24px 0 rgba(255, 255, 255, 0.5);
+    transition: all 250ms ease-in-out;
+
+    ${({ isOn }) => !isOn && css`
+        justify-content: center;
+        box-shadow: unset;
+    `}
+
+    @media screen and (min-width: 30rem) {
+        width: 375px;
+        height: 667px;
+        border-radius: 22px;
+    }
+`;
+
+const Header = styled.header`
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    margin-bottom: 1rem;
+`;
+
+const Title = styled.h1`
+    font-size: 1rem;
+    font-weight: 400;
+`;
+
 const OnOffButton = styled.button`
     display: block;
     position: relative;
     width: 66px;
     height: 32px;
     border: none;
-    //border: 1px solid #e8ebed;
     border-radius: 20px;
     background: none;
     box-shadow: inset 4px 4px 6px 0 rgba(163, 177, 198, 0.5),
@@ -84,9 +121,11 @@ const OnOffButton = styled.button`
              -4px -4px 6px 0 rgba(255, 255, 255, 0.5);
     overflow: hidden;
 
-    margin-left: auto; 
-    margin-right: 0;
-    margin-bottom: 0.5rem;
+    margin: 0;
+
+    ${({ isOn }) => isOn && css`
+        margin: 0 0 0 auto;
+    `}
 `;
 
 const OnOffBackground = styled.div`
@@ -96,10 +135,10 @@ const OnOffBackground = styled.div`
      width: 0;
      height: 100%;
      border-radius: 20px;
-     background-color: #a6e7ff;
-     box-shadow: inset 4px 4px 6px 0 rgba(163, 177, 198, 0.5),
-            inset -4px -4px 6px 0 rgba(255, 255, 255, 0.5);
-    transition: all 250ms ease-in;
+     background-color: #D1ED5D;
+     box-shadow: inset 4px 4px 4px 0 rgba(165, 184, 90, 0.5),
+            inset -4px -4px 6px 0 rgba(243, 255, 196, 0.5);
+    transition: all 250ms cubic-bezier(0.645, 0.045, 0.355, 1);
 
     ${({ isOn }) => isOn && css`
         width: 100%;
@@ -118,7 +157,7 @@ const CircleButton = styled.div`
     box-shadow: 2px 2px 3px 0 rgba(163, 177, 198, 0.5),
              -2px -2px 3px 0 rgba(255, 255, 255, 0.5);
     transform: translateX(0);
-    transition: all 200ms ease-in;
+    transition: all 200ms cubic-bezier(0.645, 0.045, 0.355, 1);;
 
     ${({ isOn }) => isOn && css`
         transform: translateX(calc(63px - 30px));
@@ -126,67 +165,53 @@ const CircleButton = styled.div`
     `}
 `;
 
-const Mobile = styled.div`
-    position: relative;
-    width: 100%;
-    height: 100%;
-    padding: 2rem;
-    box-shadow: 12px 12px 24px 0 rgba(163, 177, 198, 0.5),
-        -12px -12px 24px 0 rgba(255, 255, 255, 0.5);
+// const AnimatedRing = styled.div`
+//   position: relative;
+//   background: none;
+//   width: 140px;
+//   height: 140px;
+//   overflow: hidden;
+//   display:flex;
+//   justify-content: center;
+//   align-items: center;
+//   border-radius: 50%;
+// `;
 
-    @media screen and (min-width: 30rem) {
-        width: 375px;
-        height: 667px;
-        border-radius: 22px;
-    }
-`;
+// const OuterRing = styled.div`
+//   width: 100%;
+//   height: 100%;
+//   background-image: linear-gradient(135deg, #FEED07 0%, #FE6A50 5%, #ED00AA 15%, #2FE3FE 50%, #8900FF 100%);
+//   border-radius: 50%;
+//   box-shadow:
+//    20px 20px 60px #bebebe,
+//    -20px -20px 60px #ffffff;
 
-const AnimatedRing = styled.div`
-  position: relative;
-  background: none;
-  width: 140px;
-  height: 140px;
-  overflow: hidden;
-  display:flex;
-  justify-content: center;
-  align-items: center;
-  border-radius: 50%;
-`;
+//   animation-duration: 2s;
+//   animation-name: rotate;
+//   animation-iteration-count: infinite;
 
-const OuterRing = styled.div`
-  width: 100%;
-  height: 100%;
-  background-image: linear-gradient(135deg, #FEED07 0%, #FE6A50 5%, #ED00AA 15%, #2FE3FE 50%, #8900FF 100%);
-  border-radius: 50%;
-  box-shadow:
-   20px 20px 60px #bebebe,
-   -20px -20px 60px #ffffff;
+//   @keyframes rotate {
+//     0% {transform:rotate(0deg);}
+//     100% {transform:rotate(360deg);}
+//   }
+// `;
 
-  animation-duration: 2s;
-  animation-name: rotate;
-  animation-iteration-count: infinite;
+// const InnerRing = styled.div`
+//   position: absolute;
+//   top: 50%;
+//   left: 50%;
+//   transform: translate(-50%, -50%);
+//   height: calc(100% - 10px);
+//   width: calc(100% - 10px);
+//   background: linear-gradient(125deg, #fff, #cfcfcf);
+//   border-radius: 50%;
+// `;
 
-  @keyframes rotate {
-    0% {transform:rotate(0deg);}
-    100% {transform:rotate(360deg);}
-  }
-`;
-
-const InnerRing = styled.div`
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  height: calc(100% - 10px);
-  width: calc(100% - 10px);
-  background: linear-gradient(125deg, #fff, #cfcfcf);
-  border-radius: 50%;
-`;
-
-const RoundButton = styled.div`
+const RoundButton = styled.button`
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-shrink: 0;
     width: 50px;
     height: 50px;
     border: none;
@@ -222,6 +247,8 @@ const VolumeSection = styled.section`
     display: flex;
     justify-content: space-between;
     align-items: center;
+
+    margin-bottom: 2rem;
 `;
 
 const VolumeController = styled.div`
@@ -238,6 +265,31 @@ const VolumeController = styled.div`
     background: none;
 `;
 
+const SquareButton = styled.button`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    min-height: 50px;
+    border: none;
+    border-radius: 12px;
+    padding: 1rem;
+    font-family: inherit;
+    font-size: 1rem;
+    line-height: 1.2;
+    box-shadow: 6px 6px 10px 0 rgba(163, 177, 198, 0.5),
+        -6px -6px 10px 0 rgba(255, 255, 255, 0.5);
+    color: inherit;
+    background-color: inherit;
+    transition: all 250ms;
+    overflow: clip;
+
+    &:active {
+        box-shadow: inset 6px 6px 10px 0 rgba(163, 177, 198, 0.5),
+        inset -6px -6px 10px 0 rgba(255, 255, 255, 0.5);
+    }
+`;
+
 function Experiment2() {
 
     const mobile = useRef();
@@ -250,6 +302,8 @@ function Experiment2() {
     const [bassSelected, setBassSelected] = useState('');
     const [chordSelected, setChordSelected] = useState('');
     const [melodySelected, setMelodySelected] = useState('');
+
+    const history = useHistory();
 
     const handleVolumeChange = (e) => {
         const { target: { value } } = e;
@@ -384,17 +438,22 @@ function Experiment2() {
 
     return (
         <Container>
-            <Mobile ref={mobile}>
-                <OnOffButton onClick={handleOnOffClick}>
-                    <OnOffBackground isOn={isOn}></OnOffBackground>
-                    <CircleButton isOn={isOn}></CircleButton>
-                </OnOffButton>
+            <Mobile ref={mobile} isOn={isOn}>
+                <Header>
+                    {!isOn && <Title>Get Started Music Maker</Title>}
+                    <OnOffButton isOn={isOn} onClick={handleOnOffClick}>
+                        <OnOffBackground isOn={isOn}></OnOffBackground>
+                        <CircleButton isOn={isOn}></CircleButton>
+                    </OnOffButton>
+                </Header>
                 {/* <RoundButton size="big">
                     <AnimatedRing>
                         <OuterRing></OuterRing>
                         <InnerRing></InnerRing>
                     </AnimatedRing>
                 </RoundButton> */}
+                {isOn && 
+                <>
                 <InstrucmentSection>
                     <Instrucment InstrucmentList={drumList} name="Drums" selected={drumSelected} setSelected={setDrumSelected} buttonWidth={buttonWidth} />
                     <Instrucment InstrucmentList={bassList} name="Bass" selected={bassSelected} setSelected={setBassSelected} buttonWidth={buttonWidth} />
@@ -410,6 +469,14 @@ function Experiment2() {
                         <input type="range" id="volume" min="0" max="100" step="1" value={volume} onChange={(e) => handleVolumeChange(e)} />
                     </VolumeController>
                 </VolumeSection>
+                </>
+                }
+                <SquareButton onClick={() => history.goBack()}>
+                    {isOn 
+                        ? `Explore Virtual Studio with this music on`
+                        : `Back to Virtual Studio`
+                    }
+                </SquareButton>
             </Mobile>
         </Container>
     )
