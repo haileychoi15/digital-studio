@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styled, { css } from 'styled-components';
 
 const Container = styled.div`
@@ -62,11 +62,50 @@ const SquareButton = styled.div`
     }
 `;
 
-function Instrucment({ InstrucmentList, name, selected, setSelected, buttonWidth }) {
+const Audio = styled.audio`
+    position: absolute;
+    top: 0;
+    left: 0;
+`;
+
+function Instrucment({ InstrucmentList, name, selected, setSelected, currentTime, buttonWidth }) {
 
     const handleOnChange = (checked, value) => {
         checked ? setSelected('') : setSelected(value);
     };
+
+    // useEffect(() => {
+        
+    // }, [currentTime]);
+
+    const handleAudio = (audios) => {
+        //const audios = document.querySelectorAll(`.${name}`);
+        audios.forEach((audio) => {
+            console.log(audio.checked);
+            audio.checked ? audio.play() : audio.pause();
+        }); 
+    }
+
+    useEffect(() => {
+        const audios = document.querySelectorAll(`.${name}`);
+        if (currentTime % 2 === 0) {
+            console.log('2의배수');
+            handleAudio(audios);
+        } 
+        else if (currentTime % 2 === 1) {
+            console.log('2의배수 나머지 1');
+            setTimeout(() => handleAudio(audios), 1000);
+        }
+        // else if (currentTime % 4 === 2) {
+        //     console.log('4의배수 나머지 2');
+        //     setTimeout(() => handleAudio(audios), 2000);
+        // }
+        // else if (currentTime % 4 === 3) {
+        //     console.log('4의배수 나머지 3');
+        //     setTimeout(() => handleAudio(audios), 1000);
+        // }
+        
+    }, [selected]);
 
     return (
         <Container>
@@ -79,6 +118,10 @@ function Instrucment({ InstrucmentList, name, selected, setSelected, buttonWidth
                             <Label htmlFor={item.key}>
                                 <input type="checkbox" id={item.key} name={name} value={selected} checked={selected === item.value} onChange={() => handleOnChange(selected === item.value, item.value)} />
                             </Label>
+                            <Audio loop className={name} checked={selected === item.value}>
+                                <source src={item.audio}></source>
+                                <p>Your browser doesn't support HTML5 audio.</p>
+                            </Audio>
                         </SquareButton>
                     </li>
                 )}

@@ -1,11 +1,14 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useHistory } from 'react-router-dom';
 import styled, { css } from 'styled-components';
-//import * as Tone from 'tone';
 import { useEventListener } from 'hooks/useEventListener';
-import { GiGuitarBassHead, GiDrum } from 'react-icons/gi';
 import { IoVolumeHigh, IoVolumeMute } from 'react-icons/io5';
 import Instrucment from 'components/Instrucment';
+import drum1 from 'assets/audios/drum1.m4a';
+import drum2 from 'assets/audios/drum2.m4a';
+import drum3 from 'assets/audios/drum3.m4a';
+import bass1 from 'assets/audios/bass1.m4a';
+import bass2 from 'assets/audios/bass2.m4a';
 
 const Container = styled.div`
     display: flex;
@@ -303,6 +306,8 @@ function Experiment2() {
     const [chordSelected, setChordSelected] = useState('');
     const [melodySelected, setMelodySelected] = useState('');
 
+    const [currentTime, setCurrentTime] = useState(0);
+
     const history = useHistory();
 
     const handleVolumeChange = (e) => {
@@ -335,33 +340,35 @@ function Experiment2() {
     }
 
     useEffect(() => {
-        console.log(isMute);
-    }, [isMute]);
+        const audios = document.querySelectorAll('audio');
+        audios.forEach((audio) => audio.volume = Number(volume/100));
+    }, [volume]);
 
     useEffect(() => {
         handleResize();
+        setInterval(() => setCurrentTime((prev) => prev + 1), 1000);
     }, []);
 
     const drumList = [
         {
             key: 'drum1',
             value: 'drum1',
-            icon: GiDrum
+            audio: drum1,
         },
         {
             key: 'drum2',
             value: 'drum2',
-            icon: GiDrum
+            audio: drum2,
         },
         {
             key: 'drum3',
             value: 'drum3',
-            icon: GiDrum
+            audio: drum3,
         },
         {
             key: 'drum4',
             value: 'drum4',
-            icon: GiDrum
+            audio: drum1,
         }
     ];
 
@@ -369,22 +376,22 @@ function Experiment2() {
         {
             key: 'bass1',
             value: 'bass1',
-            icon: GiGuitarBassHead
+            audio: bass1,
         },
         {
             key: 'bass2',
             value: 'bass2',
-            icon: GiGuitarBassHead
+            audio: bass1,
         },
         {
             key: 'bass3',
             value: 'bass3',
-            icon: GiGuitarBassHead
+            audio: bass2,
         },
         {
             key: 'bass4',
             value: 'bass4',
-            icon: GiGuitarBassHead
+            audio: bass2,
         }
     ];
 
@@ -392,22 +399,22 @@ function Experiment2() {
         {
             key: 'chord1',
             value: 'chord1',
-            icon: GiGuitarBassHead
+            audio: drum1,
         },
         {
             key: 'chord2',
             value: 'chord2',
-            icon: GiGuitarBassHead
+            audio: drum1,
         },
         {
             key: 'chord3',
             value: 'chord3',
-            icon: GiGuitarBassHead
+            audio: drum1,
         },
         {
             key: 'chord4',
             value: 'chord4',
-            icon: GiGuitarBassHead
+            audio: drum1,
         }
     ];
 
@@ -415,22 +422,22 @@ function Experiment2() {
         {
             key: 'melody1',
             value: 'melody1',
-            icon: GiGuitarBassHead
+            audio: drum1,
         },
         {
             key: 'melody2',
             value: 'melody2',
-            icon: GiGuitarBassHead
+            audio: drum1,
         },
         {
             key: 'melody3',
             value: 'melody3',
-            icon: GiGuitarBassHead
+            audio: drum1,
         },
         {
             key: 'melody4',
             value: 'melody4',
-            icon: GiGuitarBassHead
+            audio: drum1,
         }
     ];
 
@@ -455,10 +462,10 @@ function Experiment2() {
                 {isOn && 
                 <>
                 <InstrucmentSection>
-                    <Instrucment InstrucmentList={drumList} name="Drums" selected={drumSelected} setSelected={setDrumSelected} buttonWidth={buttonWidth} />
-                    <Instrucment InstrucmentList={bassList} name="Bass" selected={bassSelected} setSelected={setBassSelected} buttonWidth={buttonWidth} />
-                    <Instrucment InstrucmentList={chordList} name="Chords" selected={chordSelected} setSelected={setChordSelected} buttonWidth={buttonWidth} />
-                    <Instrucment InstrucmentList={melodyList} name="Melodies" selected={melodySelected} setSelected={setMelodySelected} buttonWidth={buttonWidth} />
+                    <Instrucment InstrucmentList={drumList} name="Drums" selected={drumSelected} setSelected={setDrumSelected} currentTime={currentTime} buttonWidth={buttonWidth} />
+                    <Instrucment InstrucmentList={bassList} name="Bass" selected={bassSelected} setSelected={setBassSelected} currentTime={currentTime} buttonWidth={buttonWidth} />
+                    <Instrucment InstrucmentList={chordList} name="Chords" selected={chordSelected} setSelected={setChordSelected} currentTime={currentTime} buttonWidth={buttonWidth} />
+                    <Instrucment InstrucmentList={melodyList} name="Melodies" selected={melodySelected} setSelected={setMelodySelected} currentTime={currentTime} buttonWidth={buttonWidth} />
                 </InstrucmentSection>
                 <VolumeSection>
                     <RoundButton onClick={handlVolumeClick}>
