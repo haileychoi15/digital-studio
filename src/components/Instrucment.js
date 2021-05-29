@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import styled, { css } from 'styled-components';
 
 const Container = styled.div`
@@ -40,8 +40,7 @@ const SquareButton = styled.div`
     border: none;
     border-radius: 12px;
     font-size: 2rem;
-    box-shadow: 6px 6px 10px 0 rgba(163, 177, 198, 0.5),
-        -6px -6px 10px 0 rgba(255, 255, 255, 0.5);
+    box-shadow: none;
     color: inherit;
     background-color: inherit;
     transition: all 250ms;
@@ -50,6 +49,11 @@ const SquareButton = styled.div`
     ${({ buttonWidth }) => buttonWidth && css`
         width: ${buttonWidth}px;
         height: ${buttonWidth}px;
+    `}
+
+    ${({ visible }) => visible && css`
+        box-shadow: 6px 6px 10px 0 rgba(163, 177, 198, 0.5),
+            -6px -6px 10px 0 rgba(255, 255, 255, 0.5);
     `}
 
     ${({ checked }) => checked && css`
@@ -70,42 +74,61 @@ const Audio = styled.audio`
 
 function Instrucment({ InstrucmentList, name, selected, setSelected, currentTime, buttonWidth }) {
 
+    const [beatTime, setbeatTime] = useState(0);
+    const [visible, setVisible] = useState(false);
+
     const handleOnChange = (checked, value) => {
+        setInterval(() => setbeatTime(prev => prev + 1), 1000);
+        // setInterval(() => {
+        //     const prevTime = Number.isInteger(beatTime) ? Number(`${beatTime}.0`) : beatTime;
+        //     setbeatTime(Math.round((prevTime + 0.1) * 10) / 10);
+        // }, 100);
         checked ? setSelected('') : setSelected(value);
+        
     };
 
-    // useEffect(() => {
-        
-    // }, [currentTime]);
-
     const handleAudio = (audios) => {
-        //const audios = document.querySelectorAll(`.${name}`);
-        audios.forEach((audio) => {
-            console.log(audio.checked);
-            audio.checked ? audio.play() : audio.pause();
-        }); 
+        
+        audios.forEach((audio) => audio.checked && audio.play()); 
+        // audios.forEach((audio) => {
+        //     console.log(audio.checked);
+        //     audio.checked ? audio.play() : audio.pause();
+        // }); 
     }
 
     useEffect(() => {
+        // console.log('currentTime', currentTime);
+        // console.log('beatTime', beatTime);
+    }, [currentTime, beatTime]);
+
+    useEffect(() => {
+
         const audios = document.querySelectorAll(`.${name}`);
-        if (currentTime % 2 === 0) {
-            console.log('2의배수');
-            handleAudio(audios);
+        audios.forEach((audio) => audio.pause());
+        
+        if (currentTime === 0) {
+            //console.log('4의 배수 currentTime', currentTime);
+            setTimeout(() => handleAudio(audios), 0);
         } 
-        else if (currentTime % 2 === 1) {
-            console.log('2의배수 나머지 1');
+        else if (currentTime === 1) {
+            //console.log('나머지 1 currentTime', currentTime);
+            setTimeout(() => handleAudio(audios), 3000);
+        }
+        else if (currentTime === 2) {
+            //console.log('나머지 2 currentTime', currentTime);
+            setTimeout(() => handleAudio(audios), 2000);
+        }
+        else if (currentTime === 3) {
+            //console.log('나머지 3 currentTime', currentTime);
             setTimeout(() => handleAudio(audios), 1000);
         }
-        // else if (currentTime % 4 === 2) {
-        //     console.log('4의배수 나머지 2');
-        //     setTimeout(() => handleAudio(audios), 2000);
-        // }
-        // else if (currentTime % 4 === 3) {
-        //     console.log('4의배수 나머지 3');
-        //     setTimeout(() => handleAudio(audios), 1000);
-        // }
         
     }, [selected]);
+
+    useEffect(() => {
+        setVisible(true);
+        return () => setVisible(false);
+    }, []);
 
     return (
         <Container>
@@ -113,7 +136,7 @@ function Instrucment({ InstrucmentList, name, selected, setSelected, currentTime
             <ButtonList>
                 {InstrucmentList.map((item, index) => 
                     <li key={index}>
-                        <SquareButton buttonWidth={buttonWidth} checked={selected === item.value}>
+                        <SquareButton visible={visible} buttonWidth={buttonWidth} checked={selected === item.value}>
                             {/* <item.icon /> */}
                             <Label htmlFor={item.key}>
                                 <input type="checkbox" id={item.key} name={name} value={selected} checked={selected === item.value} onChange={() => handleOnChange(selected === item.value, item.value)} />

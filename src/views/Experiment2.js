@@ -4,11 +4,23 @@ import styled, { css } from 'styled-components';
 import { useEventListener } from 'hooks/useEventListener';
 import { IoVolumeHigh, IoVolumeMute } from 'react-icons/io5';
 import Instrucment from 'components/Instrucment';
+import * as Tone from 'tone';
 import drum1 from 'assets/audios/drum1.m4a';
 import drum2 from 'assets/audios/drum2.m4a';
 import drum3 from 'assets/audios/drum3.m4a';
+import drum4 from 'assets/audios/drum4.m4a';
 import bass1 from 'assets/audios/bass1.m4a';
 import bass2 from 'assets/audios/bass2.m4a';
+import bass3 from 'assets/audios/bass3.m4a';
+import bass4 from 'assets/audios/bass4.m4a';
+import chord1 from 'assets/audios/chord1.m4a';
+import chord2 from 'assets/audios/chord2.m4a';
+import chord3 from 'assets/audios/chord3.m4a';
+import chord4 from 'assets/audios/chord4.m4a';
+import melody1 from 'assets/audios/melody1.m4a';
+import melody2 from 'assets/audios/melody2.m4a';
+import melody3 from 'assets/audios/melody3.m4a';
+import melody4 from 'assets/audios/melody4.m4a';
 
 const Container = styled.div`
     display: flex;
@@ -299,6 +311,7 @@ function Experiment2() {
 
     const [isOn, setIsOn] = useState(false);
     const [isMute, setIsMute] = useState(false);
+    const [beatStart, setBeatStart] = useState(false);
     const [volume, setVolume] = useState(20);
     const [buttonWidth, setButtonWidth] = useState(0);
     const [drumSelected, setDrumSelected] = useState('');
@@ -321,6 +334,11 @@ function Experiment2() {
         setIsMute((prev) => !prev);
     }
 
+    useEffect(() => {
+        const audios = document.querySelectorAll('audio');
+        audios.forEach((audio) => audio.volume = Number(volume/100));
+    }, [volume]);
+
     const handleOnOffClick = () => {
         if(isOn) {
             setDrumSelected('');
@@ -340,13 +358,22 @@ function Experiment2() {
     }
 
     useEffect(() => {
-        const audios = document.querySelectorAll('audio');
-        audios.forEach((audio) => audio.volume = Number(volume/100));
-    }, [volume]);
+        if (beatStart) {
+            //setInterval(() => setCurrentTime((prev) => (prev + 1)), 100);
+        }
+    } ,[beatStart]);
+
+    useEffect(() => {
+        if (drumSelected !== '' || bassSelected !== '' || chordSelected !== '' || melodySelected !== '') {
+            setBeatStart(true);
+        }
+        else if (drumSelected === '' && bassSelected === '' && chordSelected === '' && melodySelected === '') {
+            setBeatStart(false);
+        }
+    } ,[drumSelected, bassSelected, chordSelected, melodySelected]);
 
     useEffect(() => {
         handleResize();
-        setInterval(() => setCurrentTime((prev) => prev + 1), 1000);
     }, []);
 
     const drumList = [
@@ -368,7 +395,7 @@ function Experiment2() {
         {
             key: 'drum4',
             value: 'drum4',
-            audio: drum1,
+            audio: drum4,
         }
     ];
 
@@ -381,17 +408,17 @@ function Experiment2() {
         {
             key: 'bass2',
             value: 'bass2',
-            audio: bass1,
+            audio: bass2,
         },
         {
             key: 'bass3',
             value: 'bass3',
-            audio: bass2,
+            audio: bass3,
         },
         {
             key: 'bass4',
             value: 'bass4',
-            audio: bass2,
+            audio: bass4,
         }
     ];
 
@@ -399,22 +426,22 @@ function Experiment2() {
         {
             key: 'chord1',
             value: 'chord1',
-            audio: drum1,
+            audio: chord1,
         },
         {
             key: 'chord2',
             value: 'chord2',
-            audio: drum1,
+            audio: chord2,
         },
         {
             key: 'chord3',
             value: 'chord3',
-            audio: drum1,
+            audio: chord3,
         },
         {
             key: 'chord4',
             value: 'chord4',
-            audio: drum1,
+            audio: chord4,
         }
     ];
 
@@ -422,22 +449,22 @@ function Experiment2() {
         {
             key: 'melody1',
             value: 'melody1',
-            audio: drum1,
+            audio: melody1,
         },
         {
             key: 'melody2',
             value: 'melody2',
-            audio: drum1,
+            audio: melody2,
         },
         {
             key: 'melody3',
             value: 'melody3',
-            audio: drum1,
+            audio: melody3,
         },
         {
             key: 'melody4',
             value: 'melody4',
-            audio: drum1,
+            audio: melody4,
         }
     ];
 
@@ -462,10 +489,10 @@ function Experiment2() {
                 {isOn && 
                 <>
                 <InstrucmentSection>
-                    <Instrucment InstrucmentList={drumList} name="Drums" selected={drumSelected} setSelected={setDrumSelected} currentTime={currentTime} buttonWidth={buttonWidth} />
-                    <Instrucment InstrucmentList={bassList} name="Bass" selected={bassSelected} setSelected={setBassSelected} currentTime={currentTime} buttonWidth={buttonWidth} />
-                    <Instrucment InstrucmentList={chordList} name="Chords" selected={chordSelected} setSelected={setChordSelected} currentTime={currentTime} buttonWidth={buttonWidth} />
-                    <Instrucment InstrucmentList={melodyList} name="Melodies" selected={melodySelected} setSelected={setMelodySelected} currentTime={currentTime} buttonWidth={buttonWidth} />
+                    <Instrucment InstrucmentList={drumList} name="Drums" selected={drumSelected} setSelected={setDrumSelected} currentTime={currentTime % 4} buttonWidth={buttonWidth} />
+                    <Instrucment InstrucmentList={bassList} name="Bass" selected={bassSelected} setSelected={setBassSelected} currentTime={currentTime % 4} buttonWidth={buttonWidth} />
+                    <Instrucment InstrucmentList={chordList} name="Chords" selected={chordSelected} setSelected={setChordSelected} currentTime={currentTime % 4} buttonWidth={buttonWidth} />
+                    <Instrucment InstrucmentList={melodyList} name="Melodies" selected={melodySelected} setSelected={setMelodySelected} currentTime={currentTime % 4} buttonWidth={buttonWidth} />
                 </InstrucmentSection>
                 <VolumeSection>
                     <RoundButton onClick={handlVolumeClick}>
@@ -479,10 +506,7 @@ function Experiment2() {
                 </>
                 }
                 <SquareButton onClick={() => history.goBack()}>
-                    {isOn 
-                        ? `Explore Virtual Studio with this music on`
-                        : `Back to Virtual Studio`
-                    }
+                    Back to Virtual Studio
                 </SquareButton>
             </Mobile>
         </Container>
