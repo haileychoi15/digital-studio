@@ -74,32 +74,16 @@ const Audio = styled.audio`
 
 function Instrucment({ InstrucmentList, name, selected, setSelected, currentTime, buttonWidth }) {
 
-    const [beatTime, setbeatTime] = useState(0);
     const [visible, setVisible] = useState(false);
 
     const handleOnChange = (checked, value) => {
-        setInterval(() => setbeatTime(prev => prev + 1), 1000);
-        // setInterval(() => {
-        //     const prevTime = Number.isInteger(beatTime) ? Number(`${beatTime}.0`) : beatTime;
-        //     setbeatTime(Math.round((prevTime + 0.1) * 10) / 10);
-        // }, 100);
         checked ? setSelected('') : setSelected(value);
         
     };
 
     const handleAudio = (audios) => {
-        
         audios.forEach((audio) => audio.checked && audio.play()); 
-        // audios.forEach((audio) => {
-        //     console.log(audio.checked);
-        //     audio.checked ? audio.play() : audio.pause();
-        // }); 
     }
-
-    useEffect(() => {
-        // console.log('currentTime', currentTime);
-        // console.log('beatTime', beatTime);
-    }, [currentTime, beatTime]);
 
     useEffect(() => {
 
@@ -123,7 +107,7 @@ function Instrucment({ InstrucmentList, name, selected, setSelected, currentTime
             setTimeout(() => handleAudio(audios), 1000);
         }
         
-    }, [selected]);
+    }, [selected, currentTime, name]);
 
     useEffect(() => {
         setVisible(true);
@@ -137,7 +121,6 @@ function Instrucment({ InstrucmentList, name, selected, setSelected, currentTime
                 {InstrucmentList.map((item, index) => 
                     <li key={index}>
                         <SquareButton visible={visible} buttonWidth={buttonWidth} checked={selected === item.value}>
-                            {/* <item.icon /> */}
                             <Label htmlFor={item.key}>
                                 <input type="checkbox" id={item.key} name={name} value={selected} checked={selected === item.value} onChange={() => handleOnChange(selected === item.value, item.value)} />
                             </Label>

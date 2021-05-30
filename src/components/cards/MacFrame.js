@@ -6,7 +6,7 @@ const Container = styled.div`
     position: relative;
     width: 331px;
     height: 187.66px;
-    background: none;
+    background: red;
     flex-shrink: 0;
     transition: all 250ms;
 
@@ -97,7 +97,7 @@ const Image = styled.img`
 `;
 
 function MacFrame({ title, linkTo, thumbnail }) {
-    return (
+    return ( 
         <Container>
             <Roof aria-hidden>
                 {[0, 0, 0].map((circle, index) => 

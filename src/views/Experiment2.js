@@ -4,7 +4,7 @@ import styled, { css } from 'styled-components';
 import { useEventListener } from 'hooks/useEventListener';
 import { IoVolumeHigh, IoVolumeMute } from 'react-icons/io5';
 import Instrucment from 'components/Instrucment';
-import * as Tone from 'tone';
+//import * as Tone from 'tone';
 import drum1 from 'assets/audios/drum1.m4a';
 import drum2 from 'assets/audios/drum2.m4a';
 import drum3 from 'assets/audios/drum3.m4a';
@@ -359,7 +359,7 @@ function Experiment2() {
 
     useEffect(() => {
         if (beatStart) {
-            //setInterval(() => setCurrentTime((prev) => (prev + 1)), 100);
+            setInterval(() => setCurrentTime((prev) => (prev + 1)), 100);
         }
     } ,[beatStart]);
 

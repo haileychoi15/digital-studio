@@ -563,7 +563,7 @@ function Experiment1() {
                         A paragraph set in Lora will make a memorable appearance because of its brushed curves in contrast with driving serifs. The overall typographic voice of Lora perfectly conveys the mood of a modern-day story, or an art essay.
                         Technically Lora is optimised for screen appearance, and works equally well in print.
                         In March 2019, the family has been updated to a variable font family. Lora is designed by&nbsp;
-                        <a href="https://fonts.google.com/?query=Cyreal" target="_blank" style={{ color: "inherit", textDecoration: "underline" }}>Cyreal</a>.</p>
+                        <a href="https://fonts.google.com/?query=Cyreal" target="_blank" rel="noreferrer" style={{ color: "inherit", textDecoration: "underline" }}>Cyreal</a>.</p>
                 </Section>
                 <Section style={{ color: "#FFF5EF", backgroundColor: "#FF2323" }}>
                     <TesterSection>
