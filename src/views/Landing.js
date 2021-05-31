@@ -111,16 +111,16 @@ function Landing() {
 
     const articleList = [
         {
-            title: 'Planning & Design',
-            description: 'Launch the app and start your activity (running, cycling, walking). Launch the app and start your activity (running, cycling, walking).',
+            title: 'Plann & Design',
+            description: 'Set up the goals an app should achieve and ideate the entire flow the app would work with. Define the functionalities of the app and design in draft.',
         },
         {
             title: 'Build',
-            description: 'Join a team with your colleagues and use our awesome features to support each other while getting to know your teammates. We promise that it will be much nicer than the Monday morning meeting :)',
+            description: 'Design, Develop and do SEO things. Designed components would be unit-tested mostly with Storybook to pursue bug-free front-end. Go through challenges whenever needed.',
         },
         {
             title: 'Deploy & Manage',
-            description: 'Go through challenges together while supporting a cause you care deeply about. Launch the app and start your activity (running, cycling, walking).',
+            description: 'Deploy the app and fix details you care deeply about. Launch the app and start your business! The app will be managed after launch.',
         }
     ];
 

@@ -3,6 +3,7 @@ import styled, { css } from 'styled-components';
 import DustBackground from 'components/effects/DustBackground';
 import GlitchText from 'components/effects/GlitchText';
 import StampIcon from 'components/effects/StampIcon';
+import WebGL from 'components/WebGL';
 
 const Section = styled.section`
     width: 100%;
@@ -22,12 +23,11 @@ const TitleGroup = styled.div`
     }
 `;
 
-const Mascot = styled.div`
-    width: 200px;
-    height: 250px;
-    ${({ theme }) => css`
-        background-color: ${theme.palette.primary};
-    `};
+const WebGLContainer = styled.div`
+    width: 100%;
+    height: 100vh;
+
+    background-color: rgba(225, 255, 255, 0.2);
 `;
 
 const Title = styled.h1`
@@ -109,15 +109,17 @@ const Description = styled.p`
 function LandingSection({ forwardRef }) {
 
     const descriptionList = [
-        '(virtual) studio is a Seoul based digital studio inspired by cross-border subcultures.',
-        'we design and develope websites and mobile apps that create inspring user expreriences for brands.',
-        'we deny sticking to old tech stacks and overplanning.'
+        'Pool Studio is a Seoul based digital studio inspired by cross-border subcultures.',
+        'we design and develope websites and mobile apps that create inspring user expreriences for brands.We design and develop websites and mobile apps that interact with users in the original ways of each brand.',
+        'We deny over-designing off the point and do not stick to anything if it is just to cut the work short.'
     ];
 
     return (
         <Section ref={forwardRef}>
             <TitleGroup>
-                {/* <Mascot aria-hidden></Mascot> */}
+                <WebGLContainer>
+                    <WebGL />
+                </WebGLContainer>
                 <Title>
                     <GlitchText>We</GlitchText>
                     <GlitchGroup>
