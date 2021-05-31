@@ -4,6 +4,7 @@ import DustBackground from 'components/effects/DustBackground';
 import GlitchText from 'components/effects/GlitchText';
 import StampIcon from 'components/effects/StampIcon';
 import WebGL from 'components/WebGL';
+import WebGL2 from 'components/WebGL2';
 
 const Section = styled.section`
     width: 100%;
@@ -27,12 +28,14 @@ const WebGLContainer = styled.div`
     width: 100%;
     height: 100vh;
 
-    background-color: rgba(225, 255, 255, 0.2);
+    @media screen and (min-width: 48rem) {
+        width: 40%;
+    }
 `;
 
 const Title = styled.h1`
     position: absolute;
-    top: 50%;
+    top: 55%;
     //right: 0;
     right: 10%;
     display: flex;
@@ -50,7 +53,8 @@ const Title = styled.h1`
     `};
 
     @media screen and (min-width: 48rem) {
-        right: 0;
+        top: 50%;
+        right: 8%;
         padding-right: 1rem;
         font-size: 4.2rem;
     }
@@ -118,7 +122,7 @@ function LandingSection({ forwardRef }) {
         <Section ref={forwardRef}>
             <TitleGroup>
                 <WebGLContainer>
-                    <WebGL />
+                    <WebGL2 />
                 </WebGLContainer>
                 <Title>
                     <GlitchText>We</GlitchText>
