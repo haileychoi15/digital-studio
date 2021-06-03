@@ -3,7 +3,8 @@ import styled, { css } from 'styled-components';
 import Header from 'components/Header';
 import LandingSection from 'components/LandingSection';
 import BasicSection from 'components/BasicSection';
-import MacFrame from 'components/cards/MacFrame';
+//import MacFrame from 'components/cards/MacFrame';
+import MacFrame from 'components/cards/MacFrame2';
 import BasicArticle from 'components/cards/BasicArticle';
 import GlassCard from 'components/cards/GlassCard';
 import ProfileCard from 'components/cards/ProfileCard';
@@ -14,6 +15,7 @@ import ScrollTopButton from 'components/buttons/ScrollTopButton';
 import { useEventListener } from 'hooks/useEventListener';
 import smoothscroll from 'smoothscroll-polyfill';
 import experiment1 from 'assets/images/experiment1.png';
+import experiment2 from 'assets/images/experiment2.png';
 import haileyMemoji from 'assets/images/hailey-memoji.svg';
 import estelleMemoji from 'assets/images/estelle-memoji.svg';
 
@@ -99,7 +101,7 @@ function Landing() {
         {
             title: 'experiment2',
             address: '/experiment2',
-            thumbnail: experiment1,
+            thumbnail: experiment2,
         },
     ]
 

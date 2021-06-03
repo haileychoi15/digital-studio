@@ -4,13 +4,12 @@ import styled, { css } from 'styled-components';
 
 const Container = styled.div`
     position: relative;
-    width: 331px;
-    height: 185.66px;
-    background: red;
+    width: 358px;
+    //height: calc(185.66px + 1rem);
+    //background: red;
     flex-shrink: 0;
     transition: all 250ms;
-
-    margin-top: 1rem;
+    padding: 1rem 0 0.5rem;
 
     & + & {
         margin-left: 1rem;
@@ -18,13 +17,10 @@ const Container = styled.div`
 
     @media screen and (min-width: 48rem) {
         width: 513px;
-        height: 267.6px;
 
-        /* &:hover {
-            transform: translateY(-0.7rem);
-        } */
-
-        margin-top: 2.2rem; // 위로 transform 되는만큼 + roof
+        &:hover {
+            transform: translateY(-1rem);
+        }
     }
 
     @media screen and (min-width: 75rem) {
@@ -36,7 +32,7 @@ const Container = styled.div`
 
 const Roof = styled.div`
     position: absolute;
-    top: -1rem;
+    top: 0;
     left: 0;
     display: flex;
     align-items: center;
@@ -45,6 +41,7 @@ const Roof = styled.div`
     border-top-left-radius: 4px;
     border-top-right-radius: 4px;
     padding: 0 0.5rem;
+    z-index: 10;
 
     ${({ theme }) => css`
         border: 1px solid ${theme.palette.gray};
@@ -52,7 +49,7 @@ const Roof = styled.div`
     `};
 
     @media screen and (min-width: 48rem) {
-        top: -1.4rem;
+        top: -0.4rem;
         height: 1.4rem;
         border-top-left-radius: 6px;
         border-top-right-radius: 6px;
@@ -84,11 +81,16 @@ const Circle = styled.div`
 
 const Article = styled.article`
     width: 100%;
-    height: 100%;
+    height: 191.75px;
+    background-color: yellow;
 
     ${({ theme }) => css`
         border: 1px solid ${theme.palette.gray};
     `};
+
+    @media screen and (min-width: 48rem) {
+        height: 267.6px;
+    }
 `;
 
 const Image = styled.img`
@@ -100,16 +102,18 @@ function MacFrame({ title, linkTo, thumbnail }) {
     return ( 
         <Container>
             <div>
-                <Roof aria-hidden>
-                    {[0, 0, 0].map((circle, index) => 
-                        <Circle key={index}></Circle>
-                    )}
-                </Roof>
-                <Link to={linkTo}>
-                    <Article>
-                        <Image src={thumbnail} alt={title} />
-                    </Article>
-                </Link>
+                <div>
+                    <Roof aria-hidden>
+                        {[0, 0, 0].map((circle, index) => 
+                            <Circle key={index}></Circle>
+                        )}
+                    </Roof>
+                    <Link to={linkTo}>
+                        <Article>
+                            <Image src={thumbnail} alt={title} />
+                        </Article>
+                    </Link>
+                </div>
             </div>
         </Container>
     )
