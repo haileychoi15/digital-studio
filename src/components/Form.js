@@ -19,7 +19,7 @@ const SubmitButton = styled.div`
     }
 `;
 
-function Form() {
+function Form({ setSubmitResult }) {
 
     const [emailValue, setEmailValue] = useState('');
     const [nameValue, setNameValue] = useState('');
@@ -27,7 +27,40 @@ function Form() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log(emailValue, nameValue, messageValue);
+        sendEmail();
+    }
+
+    const handleResponse = (response) => {
+        if (response === 'OK') {
+            setEmailValue('');
+            setNameValue('');
+            setMessageValue('');
+
+            setSubmitResult('Thank you for getting in touch. We’ll get back to you soon.');   
+
+        } else {
+            setSubmitResult('Sorry Something went wrong. Please try again or contact us directly.');    
+        }   
+    }
+
+    const sendEmail = async () => {
+
+        if (emailValue.trim() === '' ||  nameValue.trim() === '' || messageValue.trim() === '') {
+            setSubmitResult('Please fill up the form completely.');
+            return false;
+        }
+
+        const secureToken = process.env.REACT_APP_SMTP_SECURE_TOKEN;
+        const response = await window.Email.send({
+            SecureToken: secureToken,
+            To : 'pool.digital.studio@gmail.com',
+            From: 'imdud0612@gmail.com',
+            Subject : `Inquiry from ${nameValue}(${emailValue})`,
+            Body : messageValue
+        });
+
+        console.log('smtp response : ', response);
+        handleResponse(response);
     }
 
     return (

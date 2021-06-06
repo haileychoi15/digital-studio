@@ -122,7 +122,7 @@ function LandingSection({ forwardRef }) {
         <Section ref={forwardRef}>
             <TitleGroup>
                 <WebGLContainer>
-                    <WebGL />
+                    {/* <WebGL /> */}
                 </WebGLContainer>
                 <Title>
                     <GlitchText>We</GlitchText>

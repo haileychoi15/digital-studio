@@ -18,6 +18,7 @@ import experiment1 from 'assets/images/experiment1.png';
 import experiment2 from 'assets/images/experiment2.png';
 import haileyMemoji from 'assets/images/hailey-memoji.svg';
 import estelleMemoji from 'assets/images/estelle-memoji.svg';
+import MessageCard from 'components/cards/MessageCard';
 
 const Container = styled.div`
     width: 100vw;
@@ -148,6 +149,15 @@ function Landing() {
     const [mobile, setMobile] = useState(0);
     const landingSection = useRef();
 
+    const [submited, setSubmited] = useState(false);
+    const [submitResult, setSubmitResult] = useState('');
+
+    useEffect(() => {
+        if(submitResult) {
+            setSubmited(true);
+        }
+    }, [submitResult]);
+
     const handleResize = () => {
         const innerWidth = window.innerWidth;
         innerWidth / 16 < 48 ? setMobile(true) : setMobile(false); //48rem
@@ -162,6 +172,7 @@ function Landing() {
 
     return (
         <Container>
+            <MessageCard submited={submited} setSubmited={setSubmited} setSubmitResult={setSubmitResult}>{submitResult}</MessageCard>
             <Header />
             <LandingSection forwardRef={landingSection} />
             <BasicSection title="Experiments" scroll>
@@ -216,7 +227,7 @@ function Landing() {
                         )}
                     </ContactList>
                     <FormBlock>
-                        <Form />
+                        <Form setSubmitResult={setSubmitResult} setSubmited={setSubmited} />
                     </FormBlock>
                 </GridContainer>
             </BasicSection>
