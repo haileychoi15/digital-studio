@@ -17,6 +17,7 @@ const Container = styled.div`
 
     @media screen and (min-width: 48rem) {
         width: 513px;
+        margin-top: 1.4rem;
 
         &:hover {
             transform: translateY(-1rem);

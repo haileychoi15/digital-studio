@@ -200,7 +200,7 @@ function Landing() {
                         </BasicArticle>
                     )}
             </BasicSection>
-            <BasicSection title="Our Team" summary="you know what? cool kids never stop" scroll>
+            <BasicSection title="Our Team" summary="We like to build something cool." scroll>
                     {teamList.map((member, index) =>
                         <GlassCard key={index}>
                             <ProfileCard name={member.name} image={member.image} features={member.features}></ProfileCard>

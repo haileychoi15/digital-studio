@@ -4,7 +4,6 @@ import DustBackground from 'components/effects/DustBackground';
 import GlitchText from 'components/effects/GlitchText';
 import StampIcon from 'components/effects/StampIcon';
 import WebGL from 'components/WebGL';
-import WebGL2 from 'components/WebGL2';
 
 const Section = styled.section`
     width: 100%;
@@ -25,38 +24,45 @@ const TitleGroup = styled.div`
 `;
 
 const WebGLContainer = styled.div`
+    position: relative;
+    top: -90px;
     width: 100%;
     height: 100vh;
+    //background: red;
 
     @media screen and (min-width: 48rem) {
+        top: 0;
+        width: 60%;
+    }
+
+    @media screen and (min-width: 75rem) {
         width: 40%;
     }
 `;
 
 const Title = styled.h1`
     position: absolute;
-    top: 55%;
-    //right: 0;
-    right: 10%;
+    top: 63%;
+    right: 12%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
     max-width: 80%;
     transform: translate(0, -50%);
-    font-size: calc(100vw * 0.15);
+    font-size: calc(100vw * 0.13);
     font-weight: 800;
     
     ${({ theme }) => css`
         color: ${theme.palette.black};
-        -webkit-text-stroke: 0.5px ${theme.palette.primary};
+        -webkit-text-stroke: 0.5px ${theme.palette.white};
     `};
 
     @media screen and (min-width: 48rem) {
         top: 50%;
-        right: 8%;
+        right: 7%;
         padding-right: 1rem;
-        font-size: 4.2rem;
+        font-size: 3.8rem;
     }
 `;
 
@@ -93,12 +99,14 @@ const ContentGroup = styled.div`
 const Content = styled.div`
     position: relative;
     font-size: 1.75rem;
+    line-height: 1.2;
 
     z-index: 10;
     //background-color: red;
 
     @media screen and (min-width: 48rem) {
         font-size: 2.5rem;
+        line-height: 1.1;
     }
 `;
 
@@ -122,7 +130,7 @@ function LandingSection({ forwardRef }) {
         <Section ref={forwardRef}>
             <TitleGroup>
                 <WebGLContainer>
-                    {/* <WebGL /> */}
+                    <WebGL />
                 </WebGLContainer>
                 <Title>
                     <GlitchText>We</GlitchText>
