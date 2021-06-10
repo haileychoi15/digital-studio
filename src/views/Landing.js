@@ -16,6 +16,8 @@ import { useEventListener } from 'hooks/useEventListener';
 import smoothscroll from 'smoothscroll-polyfill';
 import experiment1 from 'assets/images/experiment1.png';
 import experiment2 from 'assets/images/experiment2.png';
+import experiment3 from 'assets/images/experiment3.svg';
+import donut from 'assets/images/donut.png';
 import haileyMemoji from 'assets/images/hailey-memoji.svg';
 import estelleMemoji from 'assets/images/estelle-memoji.svg';
 import MessageCard from 'components/cards/MessageCard';
@@ -41,6 +43,7 @@ const ListGroup = styled.div`
 `;
 
 const ListItem = styled.li`
+    width: fit-content;
     font-size: 1.3rem;
 
     & + & {
@@ -53,6 +56,30 @@ const ListItem = styled.li`
 
     @media screen and (min-width: 90rem) {
         font-size: 2.5rem;
+    }
+`;
+
+const Link = styled.a`
+    display: flex;
+    align-items: center;
+    color: inherit;
+    cursor: pointer;
+    transition: all 250ms;
+
+    &:hover {
+        transform: translate(1rem);
+    }
+`;
+
+const Image = styled.img`
+    //position: absolute;
+    width: 80px;
+    height: 80px;
+    margin-right: 0.5rem;
+
+    @media screen and (min-width: 48rem) {
+        width: 90px;
+        height: 90px;
     }
 `;
 
@@ -70,6 +97,7 @@ const GridContainer = styled.div`
 `;
 
 const FormBlock = styled.div`
+    position: relative;
     width: 100%;
     padding: 0 5%;
 
@@ -91,6 +119,20 @@ const ContactList = styled.ul`
     }
 `;
 
+const FlexBox = styled.div`
+    /* width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: space-between;
+
+    background-color: red;
+
+    @media screen and (min-width: 48rem) {
+        flex-direction: row;
+    } */
+`;
+
 function Landing() {
 
     const macFrameList = [
@@ -104,6 +146,11 @@ function Landing() {
             address: '/experiment2',
             thumbnail: experiment2,
         },
+        {
+            title: 'experiment3',
+            address: '/experiment3',
+            thumbnail: experiment3,
+        },
     ]
 
     const skillList = [
@@ -114,12 +161,12 @@ function Landing() {
 
     const articleList = [
         {
-            title: 'Plann & Design',
+            title: 'Plan & Design',
             description: 'Set up the goals an app should achieve and ideate the entire flow the app would work with. Define the functionalities of the app and design in draft.',
         },
         {
             title: 'Build',
-            description: 'Design, Develop and do SEO things. Designed components would be unit-tested mostly with Storybook to pursue bug-free front-end. Go through challenges whenever needed.',
+            description: 'Design, develop and do SEO things. Designed components would be unit-tested mostly with Storybook to pursue bug-free front-end. Go through challenges whenever needed.',
         },
         {
             title: 'Deploy & Manage',
@@ -134,7 +181,7 @@ function Landing() {
             features: ['UI / UX designer', 'Front-end developer']
         },
         {
-            name: 'Estelle',
+            name: 'Estele',
             image: estelleMemoji,
             features: ['Front-end developer', 'iOS / Android developer']
         }
@@ -143,11 +190,12 @@ function Landing() {
     const contactList = [
         'pool.digital.studio@gmail.com',
         '010-9686-6440',
-        'instagram'
     ]
 
     const [mobile, setMobile] = useState(0);
+    //const [frameWidth, setFrameWidth] = useState(0);
     const landingSection = useRef();
+    //const experimentSection = useRef();
 
     const [submited, setSubmited] = useState(false);
     const [submitResult, setSubmitResult] = useState('');
@@ -161,6 +209,11 @@ function Landing() {
     const handleResize = () => {
         const innerWidth = window.innerWidth;
         innerWidth / 16 < 48 ? setMobile(true) : setMobile(false); //48rem
+
+        // const { current } = experimentSection;
+        // const margin = 16;
+        // console.log((current.clientWidth - margin*2) / 2);
+        // setFrameWidth((current.clientWidth - margin*2) / 2);
     }
 
     useEffect(() => {
@@ -176,9 +229,9 @@ function Landing() {
             <Header />
             <LandingSection forwardRef={landingSection} />
             <BasicSection title="Experiments" scroll>
-                {macFrameList.map((article, index) => 
-                    <MacFrame key={index} title={article.title} linkTo={article.address} thumbnail={article.thumbnail} />
-                )}
+                    {macFrameList.map((article, index) => 
+                        <MacFrame key={index} title={article.title} linkTo={article.address} thumbnail={article.thumbnail} />
+                    )}
             </BasicSection>
             <BasicSection title="Skills & Tools">
                     <ListGroup>
@@ -223,10 +276,22 @@ function Landing() {
                 <GridContainer>
                     <ContactList>
                         {contactList.map((contact, index) => 
-                            <ListItem key={index}>{contact}</ListItem>
+                            <ListItem key={index}>
+                                {contact}
+                            </ListItem>
                         )}
+                        <ListItem>
+                            <Link href="https://www.instagram.com/pool.digital.studio">
+                                {/* <Image src={donut} alt="Pool studio logo" /> */}
+                                Instagram
+                            </Link>
+                        </ListItem>
                     </ContactList>
                     <FormBlock>
+                        <Image src={donut} alt="donut" aria-label="hidden" 
+                            style={{ position: "absolute", top: "-15%", right: "15%", transform: "rotate(-20deg)" }} />
+                        <Image src={donut} alt="donut" aria-label="hidden"
+                            style={{ position: "absolute", left: "-10%", bottom: "20%", transform: "rotate(-80deg)" }} />
                         <Form setSubmitResult={setSubmitResult} setSubmited={setSubmited} />
                     </FormBlock>
                 </GridContainer>

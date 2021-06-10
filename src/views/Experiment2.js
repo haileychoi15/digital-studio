@@ -506,7 +506,7 @@ function Experiment2() {
                 </>
                 }
                 <SquareButton onClick={() => history.goBack()}>
-                    Back to Virtual Studio
+                    Back to Pool Studio
                 </SquareButton>
             </Mobile>
         </Container>
