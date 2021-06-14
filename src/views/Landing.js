@@ -15,8 +15,8 @@ import ScrollTopButton from 'components/buttons/ScrollTopButton';
 import { useEventListener } from 'hooks/useEventListener';
 import smoothscroll from 'smoothscroll-polyfill';
 import experiment1 from 'assets/images/experiment1.png';
-import experiment2 from 'assets/images/experiment2.png';
-import experiment3 from 'assets/images/experiment3.svg';
+//import experiment2 from 'assets/images/experiment2.png';
+import experiment3 from 'assets/images/experiment3.png';
 import donut from 'assets/images/donut.png';
 import haileyMemoji from 'assets/images/hailey-memoji.svg';
 import estelleMemoji from 'assets/images/estelle-memoji.svg';
@@ -141,11 +141,11 @@ function Landing() {
             address: '/experiment1',
             thumbnail: experiment1,
         },
-        {
-            title: 'experiment2',
-            address: '/experiment2',
-            thumbnail: experiment2,
-        },
+        // {
+        //     title: 'experiment2',
+        //     address: '/experiment2',
+        //     thumbnail: experiment2,
+        // },
         {
             title: 'experiment3',
             address: '/experiment3',
