@@ -629,7 +629,7 @@ function Experiment1() {
             </div>
             <Footer>
                 <GoBackButton onClick={() => history.goBack()} style={{ fontSize: "inherit", color: "inherit" }}>
-                    <span>back to Pool Studio</span>
+                    <span>Back to Pool Studio</span>
                     <BsArrowRight className="arrow-icon" style={{ marginLeft: "0.5rem" }} />
                 </GoBackButton>
                 <p>© 2021, Virtual Studio. All rights reserved.</p>

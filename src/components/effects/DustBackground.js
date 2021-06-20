@@ -24,7 +24,7 @@ function DustBackground() {
     }, []);
 
     useEffect(() => {
-        //animateNoise();
+        animateNoise();
     }, [animateNoise]);
 
     return (

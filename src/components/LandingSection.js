@@ -118,7 +118,7 @@ const Description = styled.p`
     }
 `;
 
-function LandingSection({ forwardRef }) {
+function LandingSection({ forwardRef, setModelReady }) {
 
     const descriptionList = [
         'Pool Studio is a Seoul based digital studio inspired by cross-border subcultures.',
@@ -130,7 +130,7 @@ function LandingSection({ forwardRef }) {
         <Section ref={forwardRef}>
             <TitleGroup>
                 <WebGLContainer>
-                    {/* <WebGL /> */}
+                    <WebGL setModelReady={setModelReady} />
                 </WebGLContainer>
                 <Title>
                     <GlitchText>We</GlitchText>
@@ -139,18 +139,18 @@ function LandingSection({ forwardRef }) {
                         <GlitchText>and</GlitchText>
                         <GlitchText>develope </GlitchText>
                     </GlitchGroup>
-                </Title> 
+                </Title>
             </TitleGroup>
             <ContentGroup>
                 <Content>
-                    {descriptionList.map((description, index) => 
-                        <Description key={index}>{description}</Description> 
+                    {descriptionList.map((description, index) =>
+                        <Description key={index}>{description}</Description>
                     )}
                     <StampIcon type="happy" color="secondary" positions={{ top: "-9.2rem", right: "0" }} />
                     <StampIcon type="heart" color="secondary" positions={{ bottom: "-9.3rem", left: "-2rem" }} />
                     <StampIcon type="ghost" color="secondary" positions={{ bottom: "10%", right: "30%" }} />
                 </Content>
-                <DustBackground /> 
+                <DustBackground />
             </ContentGroup>
         </Section>
     )

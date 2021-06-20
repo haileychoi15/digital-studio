@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import styled, { css } from 'styled-components';
+import Loading from 'components/Loading';
 import Header from 'components/Header';
 import LandingSection from 'components/LandingSection';
 import BasicSection from 'components/BasicSection';
@@ -21,6 +22,7 @@ import donut from 'assets/images/donut.png';
 import haileyMemoji from 'assets/images/hailey-memoji.svg';
 import estelleMemoji from 'assets/images/estelle-memoji.svg';
 import MessageCard from 'components/cards/MessageCard';
+import { checkUserAgent } from 'utils/checkUserAgent';
 
 const Container = styled.div`
     width: 100vw;
@@ -119,19 +121,19 @@ const ContactList = styled.ul`
     }
 `;
 
-const FlexBox = styled.div`
-    /* width: 100%;
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: column;
-    justify-content: space-between;
+// const FlexBox = styled.div`
+//     width: 100%;
+//     display: flex;
+//     flex-wrap: wrap;
+//     flex-direction: column;
+//     justify-content: space-between;
 
-    background-color: red;
+//     background-color: red;
 
-    @media screen and (min-width: 48rem) {
-        flex-direction: row;
-    } */
-`;
+//     @media screen and (min-width: 48rem) {
+//         flex-direction: row;
+//     }
+// `;
 
 function Landing() {
 
@@ -193,6 +195,7 @@ function Landing() {
     ]
 
     const [mobile, setMobile] = useState(0);
+    const [modelReady, setModelReady] = useState(false);
     //const [frameWidth, setFrameWidth] = useState(0);
     const landingSection = useRef();
     //const experimentSection = useRef();
@@ -201,7 +204,7 @@ function Landing() {
     const [submitResult, setSubmitResult] = useState('');
 
     useEffect(() => {
-        if(submitResult) {
+        if (submitResult) {
             setSubmited(true);
         }
     }, [submitResult]);
@@ -225,57 +228,58 @@ function Landing() {
 
     return (
         <Container>
+            {!modelReady && <Loading />}
             <MessageCard submited={submited} setSubmited={setSubmited} setSubmitResult={setSubmitResult}>{submitResult}</MessageCard>
             <Header />
-            <LandingSection forwardRef={landingSection} />
+            <LandingSection forwardRef={landingSection} setModelReady={setModelReady} />
             <BasicSection title="Experiments" scroll>
-                    {macFrameList.map((article, index) => 
-                        <MacFrame key={index} title={article.title} linkTo={article.address} thumbnail={article.thumbnail} />
-                    )}
+                {macFrameList.map((article, index) =>
+                    <MacFrame key={index} title={article.title} linkTo={article.address} thumbnail={article.thumbnail} />
+                )}
             </BasicSection>
             <BasicSection title="Skills & Tools">
-                    <ListGroup>
-                        {skillList.map((skills, index) => 
-                            <ul key={index}>
-                                {skills.map((skill, index) => 
-                                    <ListItem key={index}>{skill}</ListItem>
-                                )}
-                            </ul>
-                        )}
-                    </ListGroup>
+                <ListGroup>
+                    {skillList.map((skills, index) =>
+                        <ul key={index}>
+                            {skills.map((skill, index) =>
+                                <ListItem key={index}>{skill}</ListItem>
+                            )}
+                        </ul>
+                    )}
+                </ListGroup>
             </BasicSection>
             <BasicSection title="How do we do">
-                    {articleList.map((article, index) =>
-                        <BasicArticle key={index} 
-                                      title={article.title} 
-                                      align={`${index % 2 === 0 ? 'left' : 'right'}`}>
-                            {article.description}
-                        </BasicArticle>
-                    )}
+                {articleList.map((article, index) =>
+                    <BasicArticle key={index}
+                        title={article.title}
+                        align={`${index % 2 === 0 ? 'left' : 'right'}`}>
+                        {article.description}
+                    </BasicArticle>
+                )}
             </BasicSection>
             <BasicSection title="Our Team" summary="We like to build something cool." scroll>
-                    {teamList.map((member, index) =>
-                        <GlassCard key={index}>
-                            <ProfileCard name={member.name} image={member.image} features={member.features}></ProfileCard>
-                        </GlassCard>
-                    )}
-                    {mobile ? 
-                        <>
-                            <StampIcon type="smile" color="primary" positions={{ top: "10%", left: "0", }} />
-                            <StampIcon type="heart" color="primary" positions={{ bottom: "-40%", left: "15rem" }} />
-                            <StampIcon type="ghost" color="primary" positions={{ top: "60%", right: "1rem" }} />
-                        </> :
-                        <>
-                            <StampIcon type="smile" color="primary" positions={{ top: "18rem", left: "22.2%" }} />
-                            <StampIcon type="heart" color="primary" positions={{ bottom: "-50%", left: "50%" }} />
-                            <StampIcon type="ghost" color="primary" positions={{ top: "65%", right: "25%" }} />
-                        </>
-                    }
+                {teamList.map((member, index) =>
+                    <GlassCard key={index}>
+                        <ProfileCard name={member.name} image={member.image} features={member.features}></ProfileCard>
+                    </GlassCard>
+                )}
+                {mobile ?
+                    <>
+                        <StampIcon type="smile" color="primary" positions={{ top: "10%", left: "0", }} />
+                        <StampIcon type="heart" color="primary" positions={{ bottom: "-40%", left: "15rem" }} />
+                        <StampIcon type="ghost" color="primary" positions={{ top: "60%", right: "1rem" }} />
+                    </> :
+                    <>
+                        <StampIcon type="smile" color="primary" positions={{ top: "18rem", left: "22.2%" }} />
+                        <StampIcon type="heart" color="primary" positions={{ bottom: "-50%", left: "50%" }} />
+                        <StampIcon type="ghost" color="primary" positions={{ top: "65%", right: "25%" }} />
+                    </>
+                }
             </BasicSection>
             <BasicSection title="Let’s collaborate" id="contact">
                 <GridContainer>
                     <ContactList>
-                        {contactList.map((contact, index) => 
+                        {contactList.map((contact, index) =>
                             <ListItem key={index}>
                                 {contact}
                             </ListItem>
@@ -288,7 +292,7 @@ function Landing() {
                         </ListItem>
                     </ContactList>
                     <FormBlock>
-                        <Image src={donut} alt="donut" aria-label="hidden" 
+                        <Image src={donut} alt="donut" aria-label="hidden"
                             style={{ position: "absolute", top: "-15%", right: "15%", transform: "rotate(-20deg)" }} />
                         <Image src={donut} alt="donut" aria-label="hidden"
                             style={{ position: "absolute", left: "-10%", bottom: "20%", transform: "rotate(-80deg)" }} />
@@ -297,7 +301,7 @@ function Landing() {
                 </GridContainer>
             </BasicSection>
             <Footer />
-            <ScrollTopButton observeTarget={landingSection} />
+            {checkUserAgent() !== "android" && <ScrollTopButton observeTarget={landingSection} />}
         </Container>
     )
 }
