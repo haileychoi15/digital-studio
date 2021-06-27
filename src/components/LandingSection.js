@@ -122,7 +122,7 @@ function LandingSection({ forwardRef, setModelReady }) {
 
     const descriptionList = [
         'Pool Studio is a Seoul based digital studio inspired by cross-border subcultures.',
-        'we design and develope websites and mobile apps that create inspring user expreriences for brands.We design and develop websites and mobile apps that interact with users in the original ways of each brand.',
+        'We design and develop websites and mobile apps interacting with users in the original ways of each brand. We make inspiring user exprerience for brands.',
         'We deny over-designing off the point and do not stick to anything if it is just to cut the work short.'
     ];
 
