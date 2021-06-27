@@ -6,7 +6,7 @@ const Card = styled.article`
 
     @media screen and (min-width: 48rem) {
         min-width: 260px;
-    }
+    }    
 `;
 
 const Image = styled.div`

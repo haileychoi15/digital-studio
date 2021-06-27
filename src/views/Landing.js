@@ -21,6 +21,9 @@ import experiment3 from 'assets/images/experiment3.png';
 import donut from 'assets/images/donut.png';
 import haileyMemoji from 'assets/images/hailey-memoji.svg';
 import estelleMemoji from 'assets/images/estelle-memoji.svg';
+import jamesMemoji from 'assets/images/james-memoji.svg';
+import domMemoji from 'assets/images/dom-memoji.svg';
+import monicaMemoji from 'assets/images/monica-memoji.svg';
 import MessageCard from 'components/cards/MessageCard';
 import { checkUserAgent } from 'utils/checkUserAgent';
 
@@ -156,8 +159,8 @@ function Landing() {
     ]
 
     const skillList = [
-        ['HTML5', 'CSS3', 'JavaScript', 'TypeScript'],
-        ['Vue', 'React', 'WebGL', 'PWA', 'Flutter', 'Express'],
+        ['HTML5', 'CSS3', 'JavaScript', 'TypeScript', 'Node.js', 'Java'],
+        ['Vue', 'React', 'WebGL', 'PWA', 'Flutter', 'Express', 'Spring', 'MongoDB', 'MySQL'],
         ['Figma', 'Illustrator', 'Blender'],
     ];
 
@@ -180,18 +183,32 @@ function Landing() {
         {
             name: 'Hailey',
             image: haileyMemoji,
-            features: ['UI / UX designer', 'Front-end developer']
+            features: ['Interaction Research', 'Brand Visualization', 'UI/UX Design', 'Web Front-end Develop']
         },
         {
-            name: 'Estele',
+            name: 'Estelle',
             image: estelleMemoji,
-            features: ['Front-end developer', 'iOS / Android developer']
+            features: ['UX Research', '3D Modeling', 'Web Front-end Develop', 'iOS/Android Develop']
+        },
+        {
+            name: 'Dom',
+            image: domMemoji,
+            features: ['UI Research', 'Interaction Research', 'Web Front-end Develop', 'Back-end API Develop']
+        },
+        {
+            name: 'James',
+            image: jamesMemoji,
+            features: ['Back-end API Develop', 'Dev Ops', 'iOS/Android Develop', 'Project Management']
+        },
+        {
+            name: 'Monica',
+            image: monicaMemoji,
+            features: ['UX Research', 'Brand Visualization', 'Design System', 'Project Management']
         }
     ]
 
     const contactList = [
         'pool.digital.studio@gmail.com',
-        '010-9686-6440',
     ]
 
     const [mobile, setMobile] = useState(0);
@@ -257,7 +274,7 @@ function Landing() {
                     </BasicArticle>
                 )}
             </BasicSection>
-            <BasicSection title="Our Team" summary="We like to build something cool." scroll>
+            <BasicSection title="Our Team" summary="We like to build something cool." scroll flexbox padding="5%">
                 {teamList.map((member, index) =>
                     <GlassCard key={index}>
                         <ProfileCard name={member.name} image={member.image} features={member.features}></ProfileCard>

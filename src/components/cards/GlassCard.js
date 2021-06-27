@@ -21,14 +21,14 @@ const Card = styled.div`
     }
 
     @media screen and (min-width: 48rem) {
-        padding: 2.5rem;
+        padding: 1.5rem;
 
         ${({ isCircle }) => isCircle && css`
             padding: 0;
         `};
 
         & + & {
-            margin-left: 5rem;
+            margin-left: 1.5rem;
         }
     }
 `;

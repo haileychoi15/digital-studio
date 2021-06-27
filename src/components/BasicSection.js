@@ -93,7 +93,7 @@ const ContentContainer = styled.div`
         }
     `}
 
-    @media screen and (min-width: 64rem) {
+    @media screen and (min-width: 82rem) {
         overflow: unset;
     }
 `;
@@ -105,6 +105,17 @@ const Content = styled.div`
     ${({ scroll }) => scroll && css`
         display: flex;
         width: fit-content;
+
+        @media screen and (min-width: 72rem) {
+            width: 100%;
+            flex-wrap: wrap;
+            justify-content: center;
+
+            > div {
+                margin-right: 2rem;
+                margin-bottom: 2rem;
+            }
+        }    
     `}
 
     @media screen and (min-width: 48rem) {
@@ -114,14 +125,9 @@ const Content = styled.div`
             padding: 0 1rem;
         `}
     }
-
-    @media screen and (min-width: 64rem) {
-        width: 100%;
-        justify-content: center;
-    }
 `;
 
-function BasicSection({ title, summary, scroll, children, id, forwardRef }) {
+function BasicSection({ title, summary, scroll, padding, children, id, forwardRef }) {
     return (
         <Section id={id} ref={forwardRef}>
             <Title summary={summary}>{title}</Title>
@@ -132,7 +138,7 @@ function BasicSection({ title, summary, scroll, children, id, forwardRef }) {
                     <ImQuotesRight className="quote-icon" />
                 </Summary>}
             <ContentContainer scroll={scroll}>
-                <Content scroll={scroll}>
+                <Content scroll={scroll} padding={padding}>
                     {children}
                 </Content>
             </ContentContainer>
