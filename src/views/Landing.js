@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import styled, { css } from 'styled-components';
-import Loading from 'components/Loading';
+//import Loading from 'components/Loading';
 import Header from 'components/Header';
 import LandingSection from 'components/LandingSection';
 import BasicSection from 'components/BasicSection';
@@ -23,7 +23,7 @@ import haileyMemoji from 'assets/images/hailey-memoji.svg';
 import estelleMemoji from 'assets/images/estelle-memoji.svg';
 import jamesMemoji from 'assets/images/james-memoji.svg';
 import domMemoji from 'assets/images/dom-memoji.svg';
-import monicaMemoji from 'assets/images/monica-memoji.svg';
+//import monicaMemoji from 'assets/images/monica-memoji.svg';
 import MessageCard from 'components/cards/MessageCard';
 import { checkUserAgent } from 'utils/checkUserAgent';
 
@@ -116,6 +116,7 @@ const FormBlock = styled.div`
 
 const ContactList = styled.ul`
     width: fit-content;
+    z-index: 100;
 
     margin: 0 auto 2rem;
 
@@ -200,11 +201,11 @@ function Landing() {
             image: jamesMemoji,
             features: ['Back-end API Develop', 'Dev Ops', 'iOS/Android Develop', 'Project Management']
         },
-        {
-            name: 'Monica',
-            image: monicaMemoji,
-            features: ['UX Research', 'Brand Visualization', 'Design System', 'Project Management']
-        }
+        // {
+        //     name: 'Monica',
+        //     image: monicaMemoji,
+        //     features: ['UX Research', 'Brand Visualization', 'Design System', 'Project Management']
+        // }
     ]
 
     const contactList = [
@@ -245,7 +246,7 @@ function Landing() {
 
     return (
         <Container>
-            {!modelReady && <Loading />}
+            {/* {!modelReady && <Loading />} */}
             <MessageCard submited={submited} setSubmited={setSubmited} setSubmitResult={setSubmitResult}>{submitResult}</MessageCard>
             <Header />
             <LandingSection forwardRef={landingSection} setModelReady={setModelReady} />
@@ -301,12 +302,11 @@ function Landing() {
                                 {contact}
                             </ListItem>
                         )}
-                        <ListItem>
+                        {/* <ListItem>
                             <Link href="https://www.instagram.com/pool.digital.studio">
-                                {/* <Image src={donut} alt="Pool studio logo" /> */}
                                 Instagram
                             </Link>
-                        </ListItem>
+                        </ListItem> */}
                     </ContactList>
                     <FormBlock>
                         <Image src={donut} alt="donut" aria-label="hidden"

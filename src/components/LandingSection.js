@@ -42,15 +42,15 @@ const WebGLContainer = styled.div`
 
 const Title = styled.h1`
     position: absolute;
-    top: 63%;
-    right: 12%;
+    top: 50%;
+    right: 10%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
-    max-width: 80%;
+    max-width: 90%;
     transform: translate(0, -50%);
-    font-size: calc(100vw * 0.13);
+    font-size: calc(100vw * 0.16);
     font-weight: 800;
     
     ${({ theme }) => css`
@@ -60,9 +60,12 @@ const Title = styled.h1`
 
     @media screen and (min-width: 48rem) {
         top: 50%;
-        right: 7%;
-        padding-right: 1rem;
-        font-size: 3.8rem;
+        right: 50%;
+        max-width: unset;
+        width: 100%;
+        transform: translate(50%, -50%);
+        font-size: calc(100vw * 0.14);
+        padding: 0 10%;
     }
 `;
 
@@ -129,9 +132,9 @@ function LandingSection({ forwardRef, setModelReady }) {
     return (
         <Section ref={forwardRef}>
             <TitleGroup>
-                <WebGLContainer>
+                {/* <WebGLContainer>
                     <WebGL setModelReady={setModelReady} />
-                </WebGLContainer>
+                </WebGLContainer> */}
                 <Title>
                     <GlitchText>We</GlitchText>
                     <GlitchGroup>

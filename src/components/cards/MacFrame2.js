@@ -83,9 +83,10 @@ const Circle = styled.div`
 const Article = styled.article`
     width: 100%;
     height: 191.75px;
-    background-color: yellow;
+    
 
     ${({ theme }) => css`
+        background-color: ${theme.palette.black};
         border: 1px solid ${theme.palette.gray};
     `};
 
